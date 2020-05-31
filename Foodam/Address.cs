@@ -20,28 +20,25 @@ namespace Foodam
 		public string Street
 		{
 			get => street.Length == 0 ? "Street not assigned" : street;
-			set => street = value;
 		}
 		
 		public string PostalCode
 		{
 			get => postalCode.Length == 0 ? "Postal code not assigned" : postalCode;
-			set => postalCode = value;
 		}
 
 		public string City
 		{
 			get => city.Length == 0 ? "City name not assigned" : city;
-			set => city = value;
 		}
 		#endregion
 
 		#region methods
 		public Address(string street, string postalCode, string city)
 		{
-			Street = street;
-			PostalCode = postalCode;
-			City = city;
+			this.street = street;
+			this.postalCode = postalCode;
+			this.city = city;
 		}
 
 		public string GetFullAddress()
