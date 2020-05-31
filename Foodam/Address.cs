@@ -8,7 +8,7 @@ using System.Xml.Schema;
 
 namespace Foodam
 {
-	class DeliveryAddress
+	class Address
 	{
 		#region fields
 		private string street;
@@ -22,7 +22,7 @@ namespace Foodam
 			get => street.Length == 0 ? "Street not assigned" : street;
 			set => street = value;
 		}
-
+		
 		public string PostalCode
 		{
 			get => postalCode.Length == 0 ? "Postal code not assigned" : postalCode;
@@ -37,14 +37,14 @@ namespace Foodam
 		#endregion
 
 		#region methods
-		public DeliveryAddress(string street, string postalCode, string city)
+		public Address(string street, string postalCode, string city)
 		{
 			Street = street;
 			PostalCode = postalCode;
 			City = city;
 		}
 
-		public string GetDeliveryAddress()
+		public string GetFullAddress()
 		{
 			return $"{Street}, {PostalCode} {City}";
 		}
