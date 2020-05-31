@@ -21,35 +21,31 @@ namespace Foodam
 		public string Name
 		{
 			get => name.Length == 0 ? "Menu item name not assigned" : name;
-			set => name = value;
 		}
 
 		public string Description
 		{
 			get => description.Length == 0 ? "Description not assigned" : description;
-			set => description = value;
 		}
 
 		public string Quantity
 		{
 			get => quantity.Length == 0 ? "Quantitiy not assigned" : quantity;
-			set => quantity = value;
 		}
 
 		public double Price
 		{
 			get => price;
-			set => price = value >= 0 ? value : 0;
 		}
 		#endregion
 
 		#region methods
 		public MenuItem(string name, string description, string quantity, double price)
 		{
-			Name = name;
-			Description = description;
-			Quantity = quantity;
-			Price = price;
+			this.name = name;
+			this.description = description;
+			this.quantity = quantity;
+			this.price = price;
 		}
 		#endregion
 	}
