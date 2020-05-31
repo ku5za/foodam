@@ -11,11 +11,11 @@ namespace Foodam
 	public class MenuItem
 	{
 		#region fields
-		private string name;
-		private string itemClass;
-		private string description;
-		private string quantity;
-		private double price;
+		protected string name;
+		protected string itemClass;
+		protected string description;
+		protected string quantity;
+		protected double price;
 		#endregion
 		
 		#region properties
