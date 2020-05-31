@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
@@ -9,32 +10,38 @@ namespace Foodam
 {
 	class DeliveryAddress
 	{
+		#region fields
+		private string street;
+		private string postalCode;
+		private string city;
+		#endregion
+
 		#region properties
 		public string Street
 		{
-			get => Street.Length == 0 ? "Street not assigned" : Street;
-			set => Street = value;
+			get => street.Length == 0 ? "Street not assigned" : street;
+			set => street = value;
 		}
 
 		public string PostalCode
 		{
-			get => PostalCode.Length == 0 ? "Postal code not assigned" : PostalCode;
-			set => PostalCode = value;
+			get => postalCode.Length == 0 ? "Postal code not assigned" : postalCode;
+			set => postalCode = value;
 		}
 
 		public string City
 		{
-			get => City.Length == 0 ? "City name not assigned" : City;
-			set => City = value;
+			get => city.Length == 0 ? "City name not assigned" : city;
+			set => city = value;
 		}
 		#endregion
 
 		#region methods
-		public DeliveryAddress(string street, string postalCode, string cityName)
+		public DeliveryAddress(string street, string postalCode, string city)
 		{
 			Street = street;
 			PostalCode = postalCode;
-			City = cityName;
+			City = city;
 		}
 
 		public string GetDeliveryAddress()
