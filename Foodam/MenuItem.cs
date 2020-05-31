@@ -12,6 +12,7 @@ namespace Foodam
 	{
 		#region fields
 		private string name;
+		private string itemClass;
 		private string description;
 		private string quantity;
 		private double price;
@@ -21,6 +22,11 @@ namespace Foodam
 		public string Name
 		{
 			get => name.Length == 0 ? "Menu item name not assigned" : name;
+		}
+
+		public string ItemClass
+		{
+			get => itemClass.Length == 0 ? "Menu item class not assigned" : itemClass;
 		}
 
 		public string Description
@@ -40,9 +46,10 @@ namespace Foodam
 		#endregion
 
 		#region methods
-		public MenuItem(string name, string description, string quantity, double price)
+		public MenuItem(string name, string itemClass, string description, string quantity, double price)
 		{
 			this.name = name;
+			this.itemClass = itemClass;
 			this.description = description;
 			this.quantity = quantity;
 			this.price = price;
