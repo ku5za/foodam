@@ -8,7 +8,7 @@ using System.Xml.Schema;
 
 namespace Foodam
 {
-	class Address
+	public class Address
 	{
 		#region fields
 		private string street;
