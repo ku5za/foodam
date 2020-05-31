@@ -10,7 +10,7 @@ namespace Foodam
 	{
 		public CityValidator()
 			//: base(@"\A\w{3,}")
-			: base(@"\A[^\W\d]{3,}")
+			: base(@"[^\W\d.,]{3,}")
 		{ }
 
 		public CityValidator(string regex)

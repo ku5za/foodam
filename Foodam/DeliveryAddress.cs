@@ -10,9 +10,9 @@ namespace Foodam
 	class DeliveryAddress
 	{
 		#region fields
-		InputValidator StreetValidator;
-		InputValidator PostalCodeValidator;
-		InputValidator CityNameValidator;
+		InputValidator streetValidator;
+		InputValidator postalCodeValidator;
+		InputValidator cityNameValidator;
 		#endregion
 
 		#region properties
@@ -21,7 +21,7 @@ namespace Foodam
 			get => Street;
 			set
 			{
-				if(StreetValidator.IsValid(value))
+				if(streetValidator.IsValid(value))
 				{
 					Street = value;
 				}
@@ -37,7 +37,7 @@ namespace Foodam
 			get => PostalCode;
 			set
 			{
-				if(PostalCodeValidator.IsValid(value))
+				if(postalCodeValidator.IsValid(value))
 				{
 					PostalCode = value;
 				}
@@ -53,7 +53,7 @@ namespace Foodam
 			get => City;
 			set
 			{
-				if (CityNameValidator.IsValid(value)) 
+				if (cityNameValidator.IsValid(value)) 
 				{
 					City = value;
 				}
@@ -68,9 +68,9 @@ namespace Foodam
 		#region methods
 		public DeliveryAddress()
 		{
-			StreetValidator = new StreetValidator();
-			PostalCodeValidator = new PostalCodeValidator();
-			CityNameValidator = new CityValidator();
+			streetValidator = new StreetValidator();
+			postalCodeValidator = new PostalCodeValidator();
+			cityNameValidator = new CityValidator();
 		}
 
 		public string GetDeliveryAddress()
