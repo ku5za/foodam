@@ -9,12 +9,6 @@ namespace Foodam
 {
 	class DeliveryAddress
 	{
-		#region fields
-		InputValidator streetValidator;
-		InputValidator postalCodeValidator;
-		InputValidator cityNameValidator;
-		#endregion
-
 		#region properties
 		public string Street
 		{
@@ -36,11 +30,11 @@ namespace Foodam
 		#endregion
 
 		#region methods
-		public DeliveryAddress()
+		public DeliveryAddress(string street, string postalCode, string cityName)
 		{
-			streetValidator = new StreetValidator();
-			postalCodeValidator = new PostalCodeValidator();
-			cityNameValidator = new CityValidator();
+			Street = street;
+			PostalCode = postalCode;
+			City = cityName;
 		}
 
 		public string GetDeliveryAddress()
