@@ -18,50 +18,20 @@ namespace Foodam
 		#region properties
 		public string Street
 		{
-			get => Street;
-			set
-			{
-				if(streetValidator.IsValid(value))
-				{
-					Street = value;
-				}
-				else
-				{
-					throw new Exception("Wprowadzono niepoprawną nazwę ulicy");
-				}
-			}
+			get => Street.Length == 0 ? "Street not assigned" : Street;
+			set => Street = value;
 		}
 
 		public string PostalCode
 		{
-			get => PostalCode;
-			set
-			{
-				if(postalCodeValidator.IsValid(value))
-				{
-					PostalCode = value;
-				}
-				else
-				{
-					throw new Exception("Wprowadzono nieprawidłowy kod pocztowy");
-				}
-			}
+			get => PostalCode.Length == 0 ? "Postal code not assigned" : PostalCode;
+			set => PostalCode = value;
 		}
 
 		public string City
 		{
-			get => City;
-			set
-			{
-				if (cityNameValidator.IsValid(value)) 
-				{
-					City = value;
-				}
-				else
-				{
-					throw new Exception("Wprowadzono niepoprawną nazwę miasta");
-				}
-			}
+			get => City.Length == 0 ? "City name not assigned" : City;
+			set => City = value;
 		}
 		#endregion
 
