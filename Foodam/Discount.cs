@@ -15,6 +15,11 @@ namespace Foodam
 			this.discountComponentialMenuItemClasses = discountComponentialMenuItemClasses;
 		}
 
+		protected Discount(params string[] discountComponentialMenuItemClasses)
+		{
+			this.discountComponentialMenuItemClasses = new List<string>(discountComponentialMenuItemClasses);
+		}
+
 		public abstract double CalculateDecreasedPrice(List<MenuItem> menuItems);
 	}
 }
