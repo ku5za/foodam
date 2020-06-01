@@ -8,9 +8,9 @@ namespace Foodam
 {
 	public abstract class Discount
 	{
-		private List<string> menuItemClassesOnDiscount;
+		protected List<string> menuItemClassesOnDiscount;
 
-		public Discount(List<string> menuItemClassesOnDiscount)
+		protected Discount(List<string> menuItemClassesOnDiscount)
 		{
 			this.menuItemClassesOnDiscount = menuItemClassesOnDiscount;
 		}
