@@ -8,11 +8,11 @@ namespace Foodam
 {
 	public abstract class Discount
 	{
-		protected List<string> menuItemClassesOnDiscount;
+		protected List<string> discountComponentialMenuItemClasses;
 
-		protected Discount(List<string> menuItemClassesOnDiscount)
+		protected Discount(List<string> discountComponentialMenuItemClasses)
 		{
-			this.menuItemClassesOnDiscount = menuItemClassesOnDiscount;
+			this.discountComponentialMenuItemClasses = discountComponentialMenuItemClasses;
 		}
 
 		public abstract double CalculateDecreasedPrice(List<MenuItem> menuItems);
