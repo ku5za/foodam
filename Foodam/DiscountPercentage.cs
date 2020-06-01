@@ -8,10 +8,6 @@ namespace Foodam
 {
 	public class DiscountPercentage : Discount
 	{
-		#region fields
-		
-		#endregion
-
 		#region methods
 		public DiscountPercentage(double discountPercent, List<string> discountComponentialMenuItemClasses)
 			: base(discountPercent, discountComponentialMenuItemClasses)
