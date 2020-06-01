@@ -11,6 +11,7 @@ namespace Foodam
 	{
 		#region fields
 		protected List<string> discountComponentialMenuItemClasses;
+		protected double discount;
 		#endregion
 
 		#region properties
@@ -18,13 +19,15 @@ namespace Foodam
 		#endregion
 
 		#region methods
-		protected Discount(List<string> discountComponentialMenuItemClasses)
+		protected Discount(double discount, List<string> discountComponentialMenuItemClasses)
 		{
+			this.discount = discount;
 			this.discountComponentialMenuItemClasses = discountComponentialMenuItemClasses;
 		}
 
-		protected Discount(params string[] discountComponentialMenuItemClasses)
+		protected Discount(double discount, params string[] discountComponentialMenuItemClasses)
 		{
+			this.discount = discount;
 			this.discountComponentialMenuItemClasses = new List<string>(discountComponentialMenuItemClasses);
 		}
 
