@@ -30,6 +30,10 @@ namespace Foodam
 			this.menu = menu;
 			this.discounts = discounts;
 		}
+
+		public Restaurant(string name, Address address, Menu menu, params Discount[] discounts)
+			: this(name, address, menu, new List<Discount>(discounts))
+		{ }
 		#endregion
 	}
 }
