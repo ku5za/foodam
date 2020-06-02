@@ -26,7 +26,12 @@ namespace Foodam
 				totalPrice += menuItem.Price;
 			}
 
-			return totalPrice * (1.0d - discount);
+			if(IsMatchingDiscountComponentials(menuItems))
+			{
+				totalPrice = totalPrice * (1.0d - discount);
+			}
+
+			return totalPrice;
 		}
 		#endregion
 	}

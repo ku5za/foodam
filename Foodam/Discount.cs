@@ -31,6 +31,31 @@ namespace Foodam
 			this.discountComponentialMenuItemClasses = new List<string>(discountComponentialMenuItemClasses);
 		}
 
+		protected bool IsMatchingDiscountComponentials(List<MenuItem> menuItems)
+		{
+			List<string> toMatch = new List<string>(discountComponentialMenuItemClasses);
+
+			for(int i = 0; i < toMatch.Count; i++)
+			{
+				for (int j = 0; j < menuItems.Count; j++)
+				{
+					if (toMatch[i] == menuItems[j].ItemClass)
+					{
+						toMatch.RemoveAt(i);
+						menuItems.RemoveAt(j);
+						i--;
+						break;
+					}
+					else if (j == menuItems.Count - 1)
+					{
+						return false;
+					}
+				}
+			}
+
+			return toMatch.Count == 0;
+		}
+
 		public abstract double CalculateDecreasedPrice(List<MenuItem> menuItems);
 		#endregion
 	}
