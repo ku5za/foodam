@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CityValidator.cs" />
     <Compile Include="Address.cs" />
+    <Compile Include="ContactDetails.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="DiscountByValue.cs" />
     <Compile Include="DiscountPercentage.cs" />
