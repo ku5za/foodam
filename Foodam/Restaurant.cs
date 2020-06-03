@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,17 +10,13 @@ namespace Foodam
 	public class Restaurant
 	{
 		#region field
-		private string name;
-		private string phoneNumber;
-		private Address address;
+		private RestaurantContactDetails contactDetails;
 		private Menu menu;
 		private List<Discount> discounts;
 		#endregion
 
 		#region properties
-		public string Name => name;
-		public string PhoneNumber => phoneNumber;
-		public Address Address => address;
+		public RestaurantContactDetails ContactDetails => ContactDetails;
 		public Menu Menu => menu;
 		public List<Discount> Discounts => discounts;
 		#endregion
@@ -27,9 +24,7 @@ namespace Foodam
 		#region methods
 		public Restaurant(string name, string phoneNumber, Address address, Menu menu, List<Discount> discounts)
 		{
-			this.name = name;
-			this.phoneNumber = phoneNumber;
-			this.address = address;
+			this.contactDetails = new RestaurantContactDetails(name, phoneNumber, address);
 			this.menu = menu;
 			this.discounts = discounts;
 		}
