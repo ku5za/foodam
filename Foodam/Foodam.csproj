@@ -43,20 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CityValidator.cs" />
     <Compile Include="Address.cs" />
     <Compile Include="ContactDetails.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="DiscountByValue.cs" />
     <Compile Include="DiscountPercentage.cs" />
-    <Compile Include="InputValidator.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MenuItem.cs" />
-    <Compile Include="MenuItemVariation.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="PaymentDetails.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PostalCodeValidator.cs" />
     <Compile Include="Restaurant.cs" />
+    <Compile Include="RestaurantContactDetails.cs" />
     <Compile Include="StreetValidator.cs" />
   </ItemGroup>
   <ItemGroup>

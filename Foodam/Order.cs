@@ -10,12 +10,12 @@ namespace UseCases
 	public class Order
 	{
 		#region fields
-		private Address deliveryAddress;
-		private RestaurantContactDetails restaurantContactDetails;
-		private List<MenuItem> orderedMenuItems;
-		private ContactDetails contactDetails;
-		private PaymentDetails paymentDetails;
-		private double totalPrice;
+		private readonly Address deliveryAddress;
+		private readonly RestaurantContactDetails restaurantContactDetails;
+		private readonly List<MenuItem> orderedMenuItems;
+		private readonly ContactDetails contactDetails;
+		private readonly PaymentDetails paymentDetails;
+		private readonly double totalPrice;
 		#endregion
 
 		#region properties

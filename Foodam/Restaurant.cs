@@ -10,9 +10,9 @@ namespace Foodam
 	public class Restaurant
 	{
 		#region field
-		private RestaurantContactDetails contactDetails;
-		private Menu menu;
-		private List<Discount> discounts;
+		private readonly RestaurantContactDetails contactDetails;
+		private readonly Menu menu;
+		private readonly List<Discount> discounts;
 		#endregion
 
 		#region properties

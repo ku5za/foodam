@@ -9,9 +9,9 @@ namespace Foodam
 	public class RestaurantContactDetails
 	{
 		#region fields
-		private string name;
-		private string phoneNumber;
-		private Address address;
+		private readonly string name;
+		private readonly string phoneNumber;
+		private readonly Address address;
 		#endregion
 
 		#region properties

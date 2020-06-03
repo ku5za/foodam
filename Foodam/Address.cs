@@ -11,9 +11,9 @@ namespace Foodam
 	public class Address
 	{
 		#region fields
-		private string street;
-		private string postalCode;
-		private string city;
+		private readonly string street;
+		private readonly string postalCode;
+		private readonly string city;
 		#endregion
 
 		#region properties

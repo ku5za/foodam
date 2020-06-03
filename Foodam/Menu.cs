@@ -9,7 +9,7 @@ namespace Foodam
 	public class Menu
 	{
 		#region fields
-		private List<MenuItem> menuItems = new List<MenuItem>();
+		private readonly List<MenuItem> menuItems = new List<MenuItem>();
 		#endregion
 
 		#region methods

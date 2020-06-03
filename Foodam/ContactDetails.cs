@@ -9,8 +9,8 @@ namespace Foodam
 	public class ContactDetails
 	{
 		#region fields
-		private string email;
-		private string phoneNumber;
+		private readonly string email;
+		private readonly string phoneNumber;
 		#endregion
 
 		#region properties

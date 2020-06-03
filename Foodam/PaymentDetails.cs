@@ -9,7 +9,7 @@ namespace Foodam
 	public class PaymentDetails
 	{
 		#region fields
-		private string paymentMethod;
+		private readonly string paymentMethod;
 		#endregion
 
 		#region properties
