@@ -41,7 +41,7 @@ namespace Foodam
 
 		public double Price
 		{
-			get => price;
+			get => price < 0 ? 0 : price;
 		}
 		#endregion
 
