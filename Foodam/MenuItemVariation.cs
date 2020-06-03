@@ -14,6 +14,8 @@ namespace Foodam
 		#endregion
 
 		#region properties
+		public override string ItemClass => base.ItemClass + ' ' + Variation;
+
 		public string Variation
 		{
 			get => variation.Length == 0 ? "Variation not assigned" : variation;

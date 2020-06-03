@@ -24,7 +24,7 @@ namespace Foodam
 			get => name.Length == 0 ? "Menu item name not assigned" : name;
 		}
 
-		public string ItemClass
+		public virtual string ItemClass
 		{
 			get => itemClass.Length == 0 ? "Menu item class not assigned" : itemClass;
 		}
