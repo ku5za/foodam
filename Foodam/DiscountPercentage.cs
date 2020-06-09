@@ -28,7 +28,7 @@ namespace Foodam
 
 			if(IsMatchingDiscountComponentials(menuItems))
 			{
-				totalPrice = totalPrice * (1.0d - discount);
+				totalPrice *= (1.0d - discount);
 			}
 
 			return totalPrice;

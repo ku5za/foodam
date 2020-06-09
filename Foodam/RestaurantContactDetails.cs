@@ -27,6 +27,11 @@ namespace Foodam
 			this.phoneNumber = phoneNumber;
 			this.address = address;
 		}
+
+		public override string ToString()
+		{
+			return $"{Name}, {PhoneNumber}, {Address.Street} {Address.PostalCode} {Address.City}";
+		}
 		#endregion
 	}
 }

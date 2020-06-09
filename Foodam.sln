@@ -10,6 +10,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases", "UseCases\UseCas
 		{E719BBAF-1549-443D-872C-C35AC93A464C} = {E719BBAF-1549-443D-872C-C35AC93A464C}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{94019AFC-B8CD-455B-B4D2-0736C2416A60}"
+	ProjectSection(ProjectDependencies) = postProject
+		{65276A63-AB58-43E3-8774-45EE64C963A7} = {65276A63-AB58-43E3-8774-45EE64C963A7}
+		{E719BBAF-1549-443D-872C-C35AC93A464C} = {E719BBAF-1549-443D-872C-C35AC93A464C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +30,10 @@ Global
 		{65276A63-AB58-43E3-8774-45EE64C963A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65276A63-AB58-43E3-8774-45EE64C963A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65276A63-AB58-43E3-8774-45EE64C963A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94019AFC-B8CD-455B-B4D2-0736C2416A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94019AFC-B8CD-455B-B4D2-0736C2416A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94019AFC-B8CD-455B-B4D2-0736C2416A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94019AFC-B8CD-455B-B4D2-0736C2416A60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
