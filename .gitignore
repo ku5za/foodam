@@ -3,3 +3,7 @@
 */**/[Bb]in
 Foodam/Program.cs
 UseCases/Program.cs
+*/**/ClassDiagram*
+*/**/[Oo]bj
+**/test
+**/testWPF
