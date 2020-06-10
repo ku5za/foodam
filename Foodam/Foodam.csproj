@@ -73,9 +73,6 @@
     <Compile Include="RestaurantContactDetails.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
