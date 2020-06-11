@@ -5,6 +5,6 @@ namespace UseCases
 {
 	public interface IRestaurantsContactDetailsListProvider
 	{
-		List<RestaurantContactDetails> GetListOfRestaurantsContactDetails(Address address);
+		List<RestaurantContactDetails> GetListOfRestaurantsContactDetails();
 	}
 }

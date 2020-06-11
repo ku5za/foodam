@@ -27,6 +27,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FoodamDatabase", "FoodamDat
 		{D3B98D07-AC45-47C5-BAD5-F84BC7D51A20} = {D3B98D07-AC45-47C5-BAD5-F84BC7D51A20}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodamDatabaseDataProvider", "FoodamDatabaseDataProvider\FoodamDatabaseDataProvider.csproj", "{29E515E6-AD37-418A-955B-BD8C8ADC6EEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{E7BE0969-C1D4-46A1-9C9C-D6EE206375C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7BE0969-C1D4-46A1-9C9C-D6EE206375C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7BE0969-C1D4-46A1-9C9C-D6EE206375C2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{29E515E6-AD37-418A-955B-BD8C8ADC6EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29E515E6-AD37-418A-955B-BD8C8ADC6EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29E515E6-AD37-418A-955B-BD8C8ADC6EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29E515E6-AD37-418A-955B-BD8C8ADC6EEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

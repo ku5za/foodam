@@ -30,11 +30,11 @@ namespace UseCases
 		{ 
 			deliveryAddress = new Address(street, postalCode, city);
 			this.restaurantsContactDetailsListProvider = restaurantsContactDetailsListProvider;
-		} 
+		}
 
 		public List<RestaurantContactDetails> GetMatchingRestaurantsList()
 		{
-			return restaurantsContactDetailsListProvider.GetListOfRestaurantsContactDetails(deliveryAddress);
+			return restaurantsContactDetailsListProvider.GetListOfRestaurantsContactDetails();
 		}
 		#endregion
 	}
