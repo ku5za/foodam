@@ -7,3 +7,5 @@ UseCases/Program.cs
 */**/[Oo]bj
 **/test
 **/testWPF
+**/[Tt]est*
+*/**/InterfaceAdapters/Program.cs
