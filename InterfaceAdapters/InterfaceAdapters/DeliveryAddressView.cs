@@ -5,11 +5,22 @@ namespace InterfaceAdapters
 {
 	public class DeliveryAddressView
 	{
-		public string ReturnDeliveryAddressInfo(string street, string postalCode, string city)
+		public bool IsCorrectInput 
 		{
-			string toReturn = $"{street}, {postalCode} {city}";
+			get;
+			private set;
+		}
 
-			return toReturn;
+		public string Hint
+		{
+			get;
+			private set;
+		}
+
+		public DeliveryAddressView(bool isCorrect, string hint)
+		{
+			IsCorrectInput = isCorrect;
+			Hint = hint;
 		}
 	}
 }

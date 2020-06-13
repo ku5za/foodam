@@ -18,7 +18,16 @@
         <Setter Property="BorderBrush" Value="#707070"/>
     </Style>
 
-    <Style x:Key="SearchRestaurantButton_BorderStyle" TargetType="Border">
-        
+    <Style x:Key="DeliveryAddressInputHint_LabelStyle" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="16px"/>
+        <Setter Property="Foreground" Value="#999999"/>
+    </Style>
+    <Style x:Key="DeliveryAddressInputValidationHint_TextBlock" TargetType="TextBlock">
+        <Setter Property="Width" Value="400px"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="12px"/>
+        <Setter Property="Margin" Value="20 0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 </ResourceDictionary>

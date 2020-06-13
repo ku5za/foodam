@@ -70,7 +70,7 @@ namespace InterfaceAdapters
 
 		public DeliveryAddressModel(string deliveryAddress)
 		{
-			StreetValidator = x => x.Length > 0;
+			StreetValidator = x => x.Length > 4;
 			PostalCodeValidator = x => x.Length > 0;
 			CityValidator = x => x.Length > 0;
 

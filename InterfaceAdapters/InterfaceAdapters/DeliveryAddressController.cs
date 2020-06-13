@@ -16,19 +16,32 @@ namespace InterfaceAdapters
 			return new DeliveryAddressModel(deliveryAddressInput);
 		}
 
-		public string GetDeliveryAddresView(string deliveryAddressInput)
+		public DeliveryAddressView GetDeliveryAddresView(string deliveryAddressInput)
 		{
-			if(deliveryAddressInput.Length == 0)
+			DeliveryAddressView deliveryAddressView = new DeliveryAddressView(true, string.Empty);
+			string emptyDeliveryAddressInputHint = "Wprowadz pełen adres w formacie: Plac Zamkowy 1, 00-000 Warszawa";
+
+			try
 			{
-				return "Nie wprowadzono adresu";
-			}
-			else
-			{
+				if (deliveryAddressInput.Length == 0)
+				{
+					throw new Exception(emptyDeliveryAddressInputHint);
+				}
 				var deliveryAddressModel = GetDeliveryAddressModel(deliveryAddressInput);
-				DeliveryAddressView deliveryAddressView = new DeliveryAddressView();
-				return deliveryAddressView.ReturnDeliveryAddressInfo(deliveryAddressModel.GetStreet(), deliveryAddressModel.GetPostalCode(), deliveryAddressModel.GetCity());
 			}
+			catch(Exception e)
+			{
+				if(e is IndexOutOfRangeException)
+				{
+					e = new Exception(emptyDeliveryAddressInputHint);
+				}
+				deliveryAddressView = new DeliveryAddressView(false, e.Message);
+			}
+			
+			return deliveryAddressView;
 		}
+
+		//public List<string> GetMatchingRestaurantsList(Add)
 		#endregion
 	}
 }

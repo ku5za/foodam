@@ -26,6 +26,9 @@
 
         <StackPanel x:Name="DeliveryAddressInput_StackPanel"
                     Grid.Row="1">
+            <Label x:Name="DeliveryAddressInputHint_Label"
+                     Style="{StaticResource DeliveryAddressInputHint_LabelStyle}"
+                     Content="Wprowadź adres dostawy"/>
             <TextBox x:Name="DeliveryAddressInput_TextBox"
                      Grid.Row="1"
                      Style="{StaticResource DeliveryAddressInput_TextBoxStyle}">
@@ -40,7 +43,8 @@
 
             <Button x:Name="SearchRestaurants_Button"
                     Grid.Row="1"
-                    Content="wyszukaj">
+                    Content="wyszukaj"
+                    Click="SearchRestaurants_Button_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"/>
@@ -65,6 +69,8 @@
                         Opacity="0.3"/>
                 </Button.Effect>
             </Button>
+            <TextBlock x:Name="DeliveryAddressInputValidationHint_TextBlock"
+                       Style="{StaticResource DeliveryAddressInputValidationHint_TextBlock}"/>
         </StackPanel>
 
         <!--<TextBlock Grid.Column="0" Grid.Row="1" x:Name="MatchingRestaurant_TextBox"/>-->

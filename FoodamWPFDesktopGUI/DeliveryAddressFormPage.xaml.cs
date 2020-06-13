@@ -1,5 +1,6 @@
 ﻿using Foodam;
 using FoodamDatabaseDataProvider;
+using InterfaceAdapters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,21 +42,39 @@ namespace FoodamWPFDesktopGUI
 
 			foreach (var address in addresses)
 			{
-				FoodamDatabaseRestaurantsContactDetailsDataProvider dataProvider = new FoodamDatabaseRestaurantsContactDetailsDataProvider(address.Street, address.PostalCode, address.City);
-				MatchRestaurantsToDeliveryAddress matchRestaurants = new MatchRestaurantsToDeliveryAddress(address, dataProvider);
+				FoodamDatabaseRestaurantsContactDetailsDataProvider dataProvider = 
+					new FoodamDatabaseRestaurantsContactDetailsDataProvider(address.Street, address.PostalCode, address.City);
+				MatchRestaurantsToDeliveryAddress matchRestaurants = 
+					new MatchRestaurantsToDeliveryAddress(address, dataProvider);
 				var matchingRestaurants = matchRestaurants.GetMatchingRestaurantsList();
 
 				textToDisplay += $"Restauracje dla adresu {address.Street}, {address.PostalCode}, {address.City}:\n";
 				foreach (var matchedRestaurant in matchingRestaurants)
 				{
-					textToDisplay += $"{matchedRestaurant.Name}, {matchedRestaurant.PhoneNumber}, {matchedRestaurant.Address.Street}, {matchedRestaurant.Address.PostalCode}, {matchedRestaurant.Address.City}\n";
+					textToDisplay += $"{matchedRestaurant.Name}";
+					textToDisplay += $", {matchedRestaurant.PhoneNumber}";
+					textToDisplay += $", {matchedRestaurant.Address.Street}";
+					textToDisplay += $", {matchedRestaurant.Address.PostalCode}";
+					textToDisplay += $", {matchedRestaurant.Address.City}";
 				}
 
 				textToDisplay += "\n";
 			}
 
-
 			//MatchingRestaurant_TextBox.Text = textToDisplay;
+		}
+
+		private void SearchRestaurants_Button_Click(object sender, RoutedEventArgs e)
+		{
+			DeliveryAddressController deliveryAddressController = new DeliveryAddressController();
+			string deliveryAddressInput = DeliveryAddressInput_TextBox.Text;
+			var deliveryAddress = deliveryAddressController.GetDeliveryAddresView(deliveryAddressInput);
+			
+			//if(!deliveryAddress.IsCorrectInput)
+			//{
+			//	DeliveryAddressInputValidationHint_TextBlock.Text = deliveryAddress.Hint;
+			//}
+				DeliveryAddressInputValidationHint_TextBlock.Text = deliveryAddress.Hint;
 		}
 	}
 }
