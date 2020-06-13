@@ -18,9 +18,16 @@ namespace InterfaceAdapters
 
 		public string GetDeliveryAddresView(string deliveryAddressInput)
 		{
-			var deliveryAddressModel = GetDeliveryAddressModel(deliveryAddressInput);
-			DeliveryAddressView deliveryAddressView = new DeliveryAddressView();
-			return deliveryAddressView.ReturnDeliveryAddressInfo(deliveryAddressModel.GetStreet(), deliveryAddressModel.GetPostalCode(), deliveryAddressModel.GetCity());
+			if(deliveryAddressInput.Length == 0)
+			{
+				return "Nie wprowadzono adresu";
+			}
+			else
+			{
+				var deliveryAddressModel = GetDeliveryAddressModel(deliveryAddressInput);
+				DeliveryAddressView deliveryAddressView = new DeliveryAddressView();
+				return deliveryAddressView.ReturnDeliveryAddressInfo(deliveryAddressModel.GetStreet(), deliveryAddressModel.GetPostalCode(), deliveryAddressModel.GetCity());
+			}
 		}
 		#endregion
 	}
