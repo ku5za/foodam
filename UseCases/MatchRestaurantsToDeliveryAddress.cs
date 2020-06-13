@@ -24,14 +24,6 @@ namespace UseCases
 			this.restaurantsContactDetailsListProvider = restaurantsContactDetailsListProvider;
 		}
 
-		public MatchRestaurantsToDeliveryAddress(
-			string street, string postalCode, string city,
-			IRestaurantsContactDetailsListProvider restaurantsContactDetailsListProvider)
-		{ 
-			deliveryAddress = new Address(street, postalCode, city);
-			this.restaurantsContactDetailsListProvider = restaurantsContactDetailsListProvider;
-		}
-
 		public List<RestaurantContactDetails> GetMatchingRestaurantsList()
 		{
 			return restaurantsContactDetailsListProvider.GetListOfRestaurantsContactDetails();
