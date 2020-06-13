@@ -13,9 +13,6 @@ namespace InterfaceAdapters
 		private string deliveryStreet;
 		private string deliveryPostalCode;
 		private string deliveryCity;
-		private InputValidators.ValidatorTemplate<string> streetValidator;
-		private InputValidators.ValidatorTemplate<string> postalCodeValidator;
-		private InputValidators.ValidatorTemplate<string> cityValidator;
 		#endregion
 
 		#region properties
@@ -64,23 +61,11 @@ namespace InterfaceAdapters
 			}
 		}
 
-		private InputValidators.ValidatorTemplate<string> StreetValidator
-		{
-			get => streetValidator;
-			set => streetValidator = value;
-		}
+		private InputValidators.ValidatorTemplate<string> StreetValidator { get; set; }
 
-		private InputValidators.ValidatorTemplate<string> PostalCodeValidator
-		{
-			get => postalCodeValidator;
-			set => postalCodeValidator = value;
-		}
+		private InputValidators.ValidatorTemplate<string> PostalCodeValidator { get; set; }
 
-		private InputValidators.ValidatorTemplate<string> CityValidator
-		{
-			get => cityValidator;
-			set => cityValidator = value;
-		}
+		private InputValidators.ValidatorTemplate<string> CityValidator { get; set; }
 		#endregion
 
 		public DeliveryAddressModel(string deliveryAddress)
