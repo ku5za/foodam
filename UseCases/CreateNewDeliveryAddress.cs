@@ -13,7 +13,7 @@ namespace UseCases
 		public CreateNewDeliveryAddress(IDeliveryAddressProvider deliveryAddressProvider)
 			=> provider = deliveryAddressProvider;
 
-		public Address getNewDeliveryAddress()
+		public Address GetNewDeliveryAddress()
 		{
 			string street = provider.GetStreet();
 			string postalCode = provider.GetPostalCode();
