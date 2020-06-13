@@ -58,11 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FoodamDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodamDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="DeliveryAddressController.cs" />
+    <Compile Include="DeliveryAddressModel.cs" />
+    <Compile Include="DeliveryAddressView.cs" />
+    <Compile Include="InputValidators.cs" />
     <Compile Include="IRestaurantToDeliveryAddressMatcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,17 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="FoodamDatabaseDataSet.xsc">
-      <DependentUpon>FoodamDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="FoodamDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FoodamDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="FoodamDatabaseDataSet.xss">
-      <DependentUpon>FoodamDatabaseDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
