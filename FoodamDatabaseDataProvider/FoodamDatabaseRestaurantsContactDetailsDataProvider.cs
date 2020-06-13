@@ -1,6 +1,6 @@
 ﻿using Foodam;
+using FoodamDatabaseDataProvider.FoodamDatabaseDataSetTableAdapters;
 using InterfaceAdapters;
-using InterfaceAdapters.FoodamDatabaseDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
