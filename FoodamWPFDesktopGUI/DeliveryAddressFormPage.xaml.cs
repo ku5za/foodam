@@ -55,7 +55,7 @@ namespace FoodamWPFDesktopGUI
 			}
 
 
-			MatchingRestaurant_TextBox.Text = textToDisplay;
+			//MatchingRestaurant_TextBox.Text = textToDisplay;
 		}
 	}
 }

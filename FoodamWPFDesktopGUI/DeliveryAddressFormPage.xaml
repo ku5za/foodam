@@ -7,14 +7,66 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Foodam homepage">
+    <Page.Resources>
+        <Style TargetType="Page">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" x:Name="MatchingRestaurant_TextBox"/>
+        <Label x:Name="FoodamName_Label" 
+               Grid.Row="0"
+               Style="{StaticResource FoodamName_LabelStyle}"
+               Content="Foodam"/>
+
+        <StackPanel x:Name="DeliveryAddressInput_StackPanel"
+                    Grid.Row="1">
+            <TextBox x:Name="DeliveryAddressInput_TextBox"
+                     Grid.Row="1"
+                     Style="{StaticResource DeliveryAddressInput_TextBoxStyle}">
+                <TextBox.Effect>
+                    <DropShadowEffect 
+                        BlurRadius="10"
+                        Direction="270"
+                        Color="#707070"
+                        Opacity="0.3"/>
+                </TextBox.Effect>
+            </TextBox>
+
+            <Button x:Name="SearchRestaurants_Button"
+                    Grid.Row="1"
+                    Content="wyszukaj">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF3A3A"/>
+                        <Setter Property="BorderBrush" Value="#FF3A3A"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Width" Value="200px"/>
+                        <Setter Property="FontSize" Value="20px"/>
+                        <Setter Property="FontWeight" Value="Medium"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="Margin" Value="15"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect 
+                        BlurRadius="10"
+                        Direction="270"
+                        Color="#707070"
+                        Opacity="0.3"/>
+                </Button.Effect>
+            </Button>
+        </StackPanel>
+
+        <!--<TextBlock Grid.Column="0" Grid.Row="1" x:Name="MatchingRestaurant_TextBox"/>-->
     </Grid>
 </Page>
