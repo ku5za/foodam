@@ -40,7 +40,7 @@ namespace InterfaceAdapters
 				else
 				{
 					IsCorrectInput = false;
-					Hint = "Nazwa ulicy powinna składać się z co najmniej 3 znaków i posiadać numer domu. Dozwolone znaki to litery, liczby oraz myślniki.";
+					Hint = "Nazwa ulicy powinna składać się z co najmniej 3 znaków i posiadać numer domu. Dozwolone znaki to litery, liczby, myślniki oraz spacje.";
 				}
 			}
 		}
