@@ -76,8 +76,8 @@ namespace FoodamWPFDesktopGUI
 		{
 			var deliveryAddress = deliveryAddressView.DeliveryAddress;
 			var dataGateway = new FoodamDatabaseRestaurantsContactDetailsDataProvider(deliveryAddress.Street, deliveryAddress.PostalCode, deliveryAddress.City);
-			MatchRestaurantsToDeliveryAddressController controller = new MatchRestaurantsToDeliveryAddressController(dataGateway);
-			var matchedRestaurants = controller.GetMatchedRestaurantsContactDetailsView(deliveryAddress);
+			MatchRestaurantsToDeliveryAddressController controller = new MatchRestaurantsToDeliveryAddressController(deliveryAddress, dataGateway);
+			var matchedRestaurants = controller.GetMatchedRestaurantsContactDetailsView();
 
 			return matchedRestaurants;
 		}

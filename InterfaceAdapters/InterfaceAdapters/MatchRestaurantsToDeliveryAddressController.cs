@@ -15,19 +15,26 @@ namespace InterfaceAdapters
 			set;
 		}
 
-		public MatchRestaurantsToDeliveryAddressController(RestaurantsContactDetailsGateway dataGateway)
+		private Address DeliveryAddress
 		{
+			get;
+			set;
+		}
+
+		public MatchRestaurantsToDeliveryAddressController(Address deliveryAddress, RestaurantsContactDetailsGateway dataGateway)
+		{
+			DeliveryAddress = deliveryAddress;
 			DataGateway = dataGateway;
 		}
 
-		private MatchRestaurantsToDeliveryAddressModel GetMatchRestaurantsContactDetailsModel(Address deliveryAddress)
+		private MatchRestaurantsToDeliveryAddressModel GetMatchRestaurantsContactDetailsModel()
 		{
-			return new MatchRestaurantsToDeliveryAddressModel(deliveryAddress, DataGateway);
+			return new MatchRestaurantsToDeliveryAddressModel(DeliveryAddress, DataGateway);
 		}
 
-		public string[] GetMatchedRestaurantsContactDetailsView(Address deliveryAddress)
+		public string[] GetMatchedRestaurantsContactDetailsView()
 		{
-			var model = GetMatchRestaurantsContactDetailsModel(deliveryAddress);
+			var model = GetMatchRestaurantsContactDetailsModel();
 			var view = new MatchRestaurantsToDeliveryAddressView(model);
 
 			return view.GetMatchedRestaurantsContactDetailsView();
