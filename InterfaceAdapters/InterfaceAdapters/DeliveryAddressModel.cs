@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UseCases;
 
@@ -16,6 +17,18 @@ namespace InterfaceAdapters
 		#endregion
 
 		#region properties
+		public bool IsCorrectInput
+		{
+			get;
+			private set;
+		}
+
+		public string Hint
+		{
+			get;
+			private set;
+		}
+
 		private string DeliveryStreet
 		{
 			set
@@ -26,7 +39,8 @@ namespace InterfaceAdapters
 				}
 				else
 				{
-					throw new Exception("Niepoprawny adres ulicy. Dozwolone znaki to litery, liczby oraz myślniki. Nazwa ulicy powinna składać się z co najmniej 5 znaków.");
+					IsCorrectInput = false;
+					Hint = "Nazwa ulicy powinna składać się z co najmniej 3 znaków i posiadać numer domu. Dozwolone znaki to litery, liczby oraz myślniki.";
 				}
 			}
 		}
@@ -41,7 +55,8 @@ namespace InterfaceAdapters
 				}
 				else
 				{
-					throw new Exception("Niepoprawny kod pocztowy. Kod pocztowy musi być podany w formacie ll-lll, gdzie 'l' to liczba.");
+					IsCorrectInput = false;
+					Hint = "Kod pocztowy musi być podany w formacie ll-lll, gdzie 'l' to liczba.";
 				}
 			}
 		}
@@ -56,7 +71,8 @@ namespace InterfaceAdapters
 				}
 				else
 				{
-					throw new Exception("Niepoprawna nazwa miasta. Nazwa miasta powinna zawierać tylko znaki alfabetu polskiego oraz zawierać co najmniej 2 znaki.");
+					IsCorrectInput = false;
+					Hint = "Nazwa miasta powinna zawierać tylko znaki alfabetu polskiego oraz składać się z co najmniej 2 znaków.";
 				}
 			}
 		}
@@ -70,26 +86,51 @@ namespace InterfaceAdapters
 
 		public DeliveryAddressModel(string deliveryAddress)
 		{
-			StreetValidator = x => x.Length > 4;
-			PostalCodeValidator = x => x.Length > 0;
-			CityValidator = x => x.Length > 0;
+			StreetValidator = x => new Regex(@"\b[a-zA-Z\p{IsLatinExtended-A}- ]{3,}\ \d{1,3}[a-zA-Z]?/?\d{0,4}\b").IsMatch(x);
+			PostalCodeValidator = x => new Regex(@"^\b\d\d-\d\d\d\b").IsMatch(x);
+			CityValidator = x => new Regex(@"\b[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]{3,}\b").IsMatch(x);
+
+			IsCorrectInput = true;
+			Hint = string.Empty;
 
 			TearDeliveryAddressIntoDetails(deliveryAddress);
 		}
 
 		private void TearDeliveryAddressIntoDetails(string deliveryAddress)
 		{
+			string deliveryAddressInputHint = "Wprowadz pełen adres w formacie: Plac Zamkowy 1, 00-000 Warszawa";
+			if (deliveryAddress.Length == 0)
+			{
+				IsCorrectInput = false;
+				Hint = deliveryAddressInputHint;
+				return;
+			}
+
 			var streetAndCityDetailsSeparated = deliveryAddress.Trim().Split(',', (char)StringSplitOptions.RemoveEmptyEntries);
 
-			DeliveryStreet = streetAndCityDetailsSeparated[0].Trim();
+			try
+			{
+				DeliveryStreet = streetAndCityDetailsSeparated[0].Trim();
 
-			var postalCodeAndCitySeparated =
-				streetAndCityDetailsSeparated[1]
-				.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries).ToList();
-			postalCodeAndCitySeparated.RemoveAll(x => x == "");
+				var postalCodeAndCitySeparated =
+					streetAndCityDetailsSeparated[1]
+					.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries)
+					.ToList();
+				postalCodeAndCitySeparated.RemoveAll(x => x == "");
 
-			DeliveryPostalCode = postalCodeAndCitySeparated[0];
-			DeliveryCity = postalCodeAndCitySeparated[1];
+				DeliveryPostalCode = postalCodeAndCitySeparated[0];
+				DeliveryCity = postalCodeAndCitySeparated[1];
+			}
+			catch(IndexOutOfRangeException)
+			{
+				IsCorrectInput = false;
+				Hint = deliveryAddressInputHint;
+			}
+			catch(ArgumentOutOfRangeException)
+			{
+				IsCorrectInput = false;
+				Hint = deliveryAddressInputHint;
+			}
 		}
 
 		public string GetStreet()

@@ -18,27 +18,17 @@ namespace InterfaceAdapters
 
 		public DeliveryAddressView GetDeliveryAddresView(string deliveryAddressInput)
 		{
-			DeliveryAddressView deliveryAddressView = new DeliveryAddressView(true, string.Empty);
-			string emptyDeliveryAddressInputHint = "Wprowadz pełen adres w formacie: Plac Zamkowy 1, 00-000 Warszawa";
+			var model = GetDeliveryAddressModel(deliveryAddressInput);
+			DeliveryAddressView deliveryAddressView = new DeliveryAddressView(model);
 
-			try
+			if(deliveryAddressView.IsCorrectInput)
 			{
-				if (deliveryAddressInput.Length == 0)
-				{
-					throw new Exception(emptyDeliveryAddressInputHint);
-				}
-				var deliveryAddressModel = GetDeliveryAddressModel(deliveryAddressInput);
+				return deliveryAddressView;
 			}
-			catch(Exception e)
+			else
 			{
-				if(e is IndexOutOfRangeException)
-				{
-					e = new Exception(emptyDeliveryAddressInputHint);
-				}
-				deliveryAddressView = new DeliveryAddressView(false, e.Message);
+				throw new Exception(deliveryAddressView.Hint);
 			}
-			
-			return deliveryAddressView;
 		}
 
 		//public List<string> GetMatchingRestaurantsList(Add)

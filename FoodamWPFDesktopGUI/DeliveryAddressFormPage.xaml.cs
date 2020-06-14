@@ -33,16 +33,25 @@ namespace FoodamWPFDesktopGUI
 		{
 			DeliveryAddressController deliveryAddressController = new DeliveryAddressController();
 			string deliveryAddressInput = DeliveryAddressInput_TextBox.Text;
-			var deliveryAddressView = deliveryAddressController.GetDeliveryAddresView(deliveryAddressInput);
+			DeliveryAddressView deliveryAddressView = null;
 
-			if (deliveryAddressView.IsCorrectInput)
+			try
 			{
+				deliveryAddressView = deliveryAddressController.GetDeliveryAddresView(deliveryAddressInput);
+			}
+			catch(Exception exc)
+			{
+				DeliveryAddressInputValidationHint_TextBlock.Text = exc.Message;
+			}
 
-			}
-			else
+			if (!(deliveryAddressView is null))
 			{
-				DeliveryAddressInputValidationHint_TextBlock.Text = deliveryAddressView.Hint;
+				MessageBox.Show("Wszystko ok");
 			}
+			//else
+			//{
+			//	DeliveryAddressInputValidationHint_TextBlock.Text = deliveryAddressView.Hint;
+			//}
 		}
 	}
 }
