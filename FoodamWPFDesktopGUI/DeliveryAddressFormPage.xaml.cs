@@ -44,14 +44,42 @@ namespace FoodamWPFDesktopGUI
 				DeliveryAddressInputValidationHint_TextBlock.Text = exc.Message;
 			}
 
+			GoFurtherIfNotNull(deliveryAddressView);
+		}
+
+		private void GoFurtherIfNotNull(DeliveryAddressView deliveryAddressView)
+		{
 			if (!(deliveryAddressView is null))
 			{
-				MessageBox.Show("Wszystko ok");
+				DeliveryAddressInputValidationHint_TextBlock.Text = "";
+
+				var matchedRestaurants = GetNextPageContent(deliveryAddressView);
+
+				string toShow = string.Empty;
+				if(matchedRestaurants.Length == 0)
+				{
+					toShow = "Nie znaleziono restauracji dla podanego adresu";
+				}
+				else
+				{
+					foreach(var matchedRestaurant in matchedRestaurants)
+					{
+						toShow += matchedRestaurant + "\n";
+					}
+				}
+
+				MessageBox.Show(toShow);
 			}
-			//else
-			//{
-			//	DeliveryAddressInputValidationHint_TextBlock.Text = deliveryAddressView.Hint;
-			//}
+		}
+
+		private string[] GetNextPageContent(DeliveryAddressView deliveryAddressView)
+		{
+			var deliveryAddress = deliveryAddressView.DeliveryAddress;
+			var dataGateway = new FoodamDatabaseRestaurantsContactDetailsDataProvider(deliveryAddress.Street, deliveryAddress.PostalCode, deliveryAddress.City);
+			MatchRestaurantsToDeliveryAddressController controller = new MatchRestaurantsToDeliveryAddressController(dataGateway);
+			var matchedRestaurants = controller.GetMatchedRestaurantsContactDetailsView(deliveryAddress);
+
+			return matchedRestaurants;
 		}
 	}
 }
