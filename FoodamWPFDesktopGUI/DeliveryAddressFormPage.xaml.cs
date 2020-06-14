@@ -55,20 +55,15 @@ namespace FoodamWPFDesktopGUI
 
 				var matchedRestaurants = GetNextPageContent(deliveryAddressView);
 
-				string toShow = string.Empty;
 				if(matchedRestaurants.Length == 0)
 				{
-					toShow = "Nie znaleziono restauracji dla podanego adresu";
+					MessageBox.Show("Nie znaleziono restauracji dla podanego adresu");
 				}
 				else
 				{
-					foreach(var matchedRestaurant in matchedRestaurants)
-					{
-						toShow += matchedRestaurant + "\n";
-					}
+					this.NavigationService.Navigate(new MatchingRestaurantSelectionPage(matchedRestaurants));
 				}
 
-				MessageBox.Show(toShow);
 			}
 		}
 
