@@ -8,7 +8,7 @@ using UseCases;
 
 namespace InterfaceAdapters
 {
-	public abstract class RestaurantContactDetailsGateway : IRestaurantsContactDetailsListProvider
+	public abstract class RestaurantsContactDetailsGateway : IRestaurantsContactDetailsListProvider
 	{
 		public delegate bool RestaurantsContactDetailsMatcher(RestaurantContactDetails restaurantContactDetails);
 

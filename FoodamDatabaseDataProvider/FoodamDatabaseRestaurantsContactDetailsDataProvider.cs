@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FoodamDatabaseDataProvider
 {
-	public class FoodamDatabaseRestaurantsContactDetailsDataProvider : RestaurantContactDetailsGateway
+	public class FoodamDatabaseRestaurantsContactDetailsDataProvider : RestaurantsContactDetailsGateway
 	{
 		private readonly Address address;
 
