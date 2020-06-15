@@ -13,13 +13,11 @@
         </Style>
     </Page.Resources>
     
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
 
         <Label x:Name="FoodamName_Label" 
                Grid.Row="0"
@@ -27,18 +25,26 @@
                Content="Foodam">
             <Label.RenderTransform>
                 <TranslateTransform x:Name="FoodamNameLabelTransform"
-                                    Y="-50"/>
+                                    Y="-100"/>
             </Label.RenderTransform>
             <Label.Triggers>
                 <EventTrigger RoutedEvent="Label.Loaded">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation From="-50" To="0" Duration="0:0:0.4"
+                            <DoubleAnimation From="-100" To="0" Duration="0:0:0.75"
                                              Storyboard.TargetName="FoodamNameLabelTransform"
-                                             Storyboard.TargetProperty="Y"/>
-                            <DoubleAnimation From="0" To="1.0" Duration="0:0:0.4"
+                                             Storyboard.TargetProperty="Y">
+                                <DoubleAnimation.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation From="0" To="1.0" Duration="0:0:0.75"
                                              Storyboard.TargetName="FoodamName_Label"
-                                             Storyboard.TargetProperty="Opacity"/>
+                                             Storyboard.TargetProperty="Opacity">
+                                <DoubleAnimation.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>    
                 </EventTrigger>
@@ -49,7 +55,37 @@
                     Grid.Row="1">
             <Label x:Name="DeliveryAddressInputHint_Label"
                    Style="{StaticResource DeliveryAddressInputHint_LabelStyle}"
-                   Content="Wprowadź adres dostawy"/>
+                   Content="Wprowadź adres dostawy">
+                <Label.RenderTransform>
+                    <TranslateTransform x:Name="DeliveryAddressInputHintLabel"
+                                    Y="140"/>
+                </Label.RenderTransform>
+                <Label.Triggers>
+                    <EventTrigger RoutedEvent="Label.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation From="140" To="0" Duration="0:0:0.5"
+                                             BeginTime="0:0:0.25"
+                                             Storyboard.TargetName="DeliveryAddressInputHintLabel"
+                                             Storyboard.TargetProperty="Y">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.5"
+                                                 BeginTime="0:0:0.25"
+                                             Storyboard.TargetName="DeliveryAddressInputHint_Label"
+                                             Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Label.Triggers>
+            </Label>
+
             <TextBox x:Name="DeliveryAddressInput_TextBox"
                      Grid.Row="1"
                      Style="{StaticResource DeliveryAddressInput_TextBoxStyle}">
@@ -60,26 +96,44 @@
                         Color="#707070"
                         Opacity="0.3"/>
                 </TextBox.Effect>
+                <TextBox.RenderTransform>
+                    <TranslateTransform x:Name="DeliveryAddressInputTextBox"
+                                    Y="70"/>
+                </TextBox.RenderTransform>
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="Label.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation From="70" To="0" Duration="0:0:0.5"
+                                             BeginTime="0:0:0.5"
+                                             Storyboard.TargetName="DeliveryAddressInputTextBox"
+                                             Storyboard.TargetProperty="Y">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.5"
+                                                 BeginTime="0:0:0.5"
+                                             Storyboard.TargetName="DeliveryAddressInput_TextBox"
+                                             Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
             </TextBox>
 
             <Button x:Name="SearchRestaurants_Button"
                     Grid.Row="1"
                     Content="wyszukaj"
-                    Click="SearchRestaurants_Button_Click">
+                    Click="SearchRestaurants_Button_Click"
+                    Style="{StaticResource SearchRestaurants_ButtonStyle}">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"/>
-                    </Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#FF3A3A"/>
-                        <Setter Property="BorderBrush" Value="#FF3A3A"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Width" Value="200px"/>
-                        <Setter Property="FontSize" Value="20px"/>
-                        <Setter Property="FontWeight" Value="Medium"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Padding" Value="10"/>
-                        <Setter Property="Margin" Value="15"/>
                     </Style>
                 </Button.Resources>
                 <Button.Effect>
@@ -89,6 +143,35 @@
                         Color="#707070"
                         Opacity="0.3"/>
                 </Button.Effect>
+                <Button.RenderTransform>
+                    <TranslateTransform x:Name="SearchRestaurantsButton"
+                                    Y="30"/>
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Label.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation From="30" To="0" Duration="0:0:0.5"
+                                             BeginTime="0:0:0.75"
+                                             Storyboard.TargetName="SearchRestaurantsButton"
+                                             Storyboard.TargetProperty="Y">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.5"
+                                                 BeginTime="0:0:0.75"
+                                             Storyboard.TargetName="SearchRestaurants_Button"
+                                             Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    
+                </Button.Triggers>
             </Button>
             <TextBlock x:Name="DeliveryAddressInputValidationHint_TextBlock"
                        Style="{StaticResource DeliveryAddressInputValidationHint_TextBlock}"/>

@@ -8,6 +8,7 @@
         <Setter Property="FontSize" Value="48px"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="#313131"/>
+        <Setter Property="Opacity" Value="0"/>
     </Style>
 
     <Style x:Key="DeliveryAddressInput_TextBoxStyle" TargetType="TextBox">
@@ -16,13 +17,29 @@
         <Setter Property="FontSize" Value="20px"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="BorderBrush" Value="#707070"/>
+        <Setter Property="Opacity" Value="0"/>
     </Style>
 
     <Style x:Key="DeliveryAddressInputHint_LabelStyle" TargetType="Label">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="16px"/>
         <Setter Property="Foreground" Value="#999999"/>
+        <Setter Property="Opacity" Value="0"/>
     </Style>
+
+    <Style x:Key="SearchRestaurants_ButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#FF3A3A"/>
+        <Setter Property="BorderBrush" Value="#FF3A3A"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Width" Value="200px"/>
+        <Setter Property="FontSize" Value="20px"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Margin" Value="15"/>
+        <Setter Property="Opacity" Value="0"/>
+    </Style>
+
     <Style x:Key="DeliveryAddressInputValidationHint_TextBlock" TargetType="TextBlock">
         <Setter Property="Width" Value="400px"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
