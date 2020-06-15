@@ -67,7 +67,7 @@ namespace FoodamWPFDesktopGUI
 			}
 		}
 
-		private string[] GetNextPageContent(DeliveryAddressView deliveryAddressView)
+		private string GetNextPageContent(DeliveryAddressView deliveryAddressView)
 		{
 			var deliveryAddress = deliveryAddressView.DeliveryAddress;
 			var dataGateway = new FoodamDatabaseRestaurantsContactDetailsDataProvider(deliveryAddress.Street, deliveryAddress.PostalCode, deliveryAddress.City);

@@ -32,7 +32,7 @@ namespace InterfaceAdapters
 			return new MatchRestaurantsToDeliveryAddressModel(DeliveryAddress, DataGateway);
 		}
 
-		public string[] GetMatchedRestaurantsContactDetailsView()
+		public string GetMatchedRestaurantsContactDetailsView()
 		{
 			var model = GetMatchRestaurantsContactDetailsModel();
 			var view = new MatchRestaurantsToDeliveryAddressView(model);

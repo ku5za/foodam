@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Foodam;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,11 +22,16 @@ namespace FoodamWPFDesktopGUI
 	/// </summary>
 	public partial class MatchingRestaurantSelectionPage : Page
 	{
-		public MatchingRestaurantSelectionPage(string[] restaurantsListContent)
+		public MatchingRestaurantSelectionPage(string restaurantsListContent)
 		{
 			InitializeComponent();
 
-			RestaurantSelection_ListBox.ItemsSource = restaurantsListContent;
+			var restaurantsList = JsonSerializer.Deserialize<RestaurantContactDetails[]>(restaurantsListContent);
+
+			foreach(var listItem in restaurantsList)
+			{
+				RestaurantSelection_ListBox.Items.Add(new { Name = listItem.Name, PhoneNumber = listItem.PhoneNumber, Address = $"{listItem.Address.Street}, {listItem.Address.PostalCode} {listItem.Address.City}" });
+			}
 		}
 	}
 }
