@@ -13,22 +13,43 @@
         </Style>
     </Page.Resources>
     
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+
         <Label x:Name="FoodamName_Label" 
                Grid.Row="0"
                Style="{StaticResource FoodamName_LabelStyle}"
-               Content="Foodam"/>
+               Content="Foodam">
+            <Label.RenderTransform>
+                <TranslateTransform x:Name="FoodamNameLabelTransform"
+                                    Y="-50"/>
+            </Label.RenderTransform>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Label.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation From="-50" To="0" Duration="0:0:0.4"
+                                             Storyboard.TargetName="FoodamNameLabelTransform"
+                                             Storyboard.TargetProperty="Y"/>
+                            <DoubleAnimation From="0" To="1.0" Duration="0:0:0.4"
+                                             Storyboard.TargetName="FoodamName_Label"
+                                             Storyboard.TargetProperty="Opacity"/>
+                        </Storyboard>
+                    </BeginStoryboard>    
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
 
         <StackPanel x:Name="DeliveryAddressInput_StackPanel"
                     Grid.Row="1">
             <Label x:Name="DeliveryAddressInputHint_Label"
-                     Style="{StaticResource DeliveryAddressInputHint_LabelStyle}"
-                     Content="Wprowadź adres dostawy"/>
+                   Style="{StaticResource DeliveryAddressInputHint_LabelStyle}"
+                   Content="Wprowadź adres dostawy"/>
             <TextBox x:Name="DeliveryAddressInput_TextBox"
                      Grid.Row="1"
                      Style="{StaticResource DeliveryAddressInput_TextBoxStyle}">
