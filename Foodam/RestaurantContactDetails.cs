@@ -8,29 +8,20 @@ namespace Foodam
 {
 	public class RestaurantContactDetails
 	{
-		#region fields
-		private readonly string name;
-		private readonly string phoneNumber;
-		private readonly Address address;
-		#endregion
-
 		#region properties
-		public string Name => name;
-		public string PhoneNumber => phoneNumber;
-		public Address Address => address;
+		public string Name { get; set; }
+		public string PhoneNumber { get; set; }
+		public Address Address { get; set; }
 		#endregion
 
 		#region methods
+		public RestaurantContactDetails()
+		{ }
 		public RestaurantContactDetails(string name, string phoneNumber, Address address)
 		{
-			this.name = name;
-			this.phoneNumber = phoneNumber;
-			this.address = address;
-		}
-
-		public override string ToString()
-		{
-			return $"{Name}, {PhoneNumber}, {Address.Street} {Address.PostalCode} {Address.City}";
+			Name = name;
+			PhoneNumber = phoneNumber;
+			Address = address;
 		}
 		#endregion
 	}
