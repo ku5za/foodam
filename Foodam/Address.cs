@@ -10,40 +10,21 @@ namespace Foodam
 {
 	public class Address
 	{
-		#region fields
-		private readonly string street;
-		private readonly string postalCode;
-		private readonly string city;
-		#endregion
-
 		#region properties
-		public string Street
-		{
-			get => street.Length == 0 ? "Street not assigned" : street;
-		}
-		
-		public string PostalCode
-		{
-			get => postalCode.Length == 0 ? "Postal code not assigned" : postalCode;
-		}
-
-		public string City
-		{
-			get => city.Length == 0 ? "City name not assigned" : city;
-		}
+		public string Street { get; set; }
+		public string PostalCode { get; set; }
+		public string City { get; set; }
 		#endregion
 
 		#region methods
+		public Address() 
+		{ }
+
 		public Address(string street, string postalCode, string city)
 		{
-			this.street = street;
-			this.postalCode = postalCode;
-			this.city = city;
-		}
-
-		public string GetFullAddress()
-		{
-			return $"{Street}, {PostalCode} {City}";
+			Street = street;
+			PostalCode = postalCode;
+			City = city;
 		}
 		#endregion
 	}
