@@ -19,6 +19,7 @@
                    Style="{StaticResource RestaurantSelectionPageHeader_LabelStyle}"
                    Content="Restauracje w Twojej okolicy"/>
             <ListBox x:Name="RestaurantSelection_ListBox"
+                     ItemContainerStyle="{StaticResource RestaurantSelection_ListBoxItemStyle}"
                      Style="{StaticResource RestaurantSelection_ListBoxStyle}"/>
         </StackPanel>
         <Grid x:Name="RestaurantSelectionNavigation_Grid"
@@ -47,8 +48,13 @@
                 </Button.Effect>
             </Button>
             <Canvas x:Name="RestaurantSelectionOrderFillStatus_Canvas"
-                    Grid.Column="1">
-                
+                    Grid.Column="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Ellipse Width="50" Height="50" Fill="#FF3A3A" Canvas.Left="-100px" Canvas.Top="-25px"/>
+                <Label Content="1" FontSize="20" Foreground="White" Canvas.Top="-18px" Canvas.Left="-86px"/>
+                <Label Content="2" FontSize="20" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="-36px"/>
+                <Label Content="3" FontSize="20" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="14px"/>
+                <Label Content="4" FontSize="20" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="64px"/>
             </Canvas>
             <Button x:Name="RestaurantSelectionForwards_Button"
                     Grid.Column="2"
