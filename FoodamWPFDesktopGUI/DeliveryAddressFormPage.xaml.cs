@@ -47,13 +47,14 @@ namespace FoodamWPFDesktopGUI
 			GoFurtherIfNotNull(deliveryAddressView);
 		}
 
-		private void GoFurtherIfNotNull(DeliveryAddressView deliveryAddressView)
+		private async void GoFurtherIfNotNull(DeliveryAddressView deliveryAddressView)
 		{
-			if (!(deliveryAddressView is null))
+			if (deliveryAddressView != null)
 			{
 				DeliveryAddressInputValidationHint_TextBlock.Text = "";
 
-				var matchedRestaurants = GetNextPageContent(deliveryAddressView);
+				var matchedRestaurantsTask = GetNextPageContentAsync(deliveryAddressView);
+				var matchedRestaurants = await matchedRestaurantsTask;
 
 				if(matchedRestaurants.Length == 0)
 				{
@@ -61,18 +62,17 @@ namespace FoodamWPFDesktopGUI
 				}
 				else
 				{
-					this.NavigationService.Navigate(new MatchingRestaurantSelectionPage(matchedRestaurants));
+					NavigationService.Navigate(new MatchingRestaurantSelectionPage(matchedRestaurants));
 				}
-
 			}
 		}
 
-		private string GetNextPageContent(DeliveryAddressView deliveryAddressView)
+		private async Task<string> GetNextPageContentAsync(DeliveryAddressView deliveryAddressView)
 		{
 			var deliveryAddress = deliveryAddressView.DeliveryAddress;
 			var dataGateway = new FoodamDatabaseRestaurantsContactDetailsDataProvider(deliveryAddress.Street, deliveryAddress.PostalCode, deliveryAddress.City);
-			MatchRestaurantsToDeliveryAddressController controller = new MatchRestaurantsToDeliveryAddressController(deliveryAddress, dataGateway);
-			var matchedRestaurants = controller.GetMatchedRestaurantsContactDetailsView();
+			var controller = new MatchRestaurantsToDeliveryAddressController(deliveryAddress, dataGateway);
+			var matchedRestaurants = await Task.Run(() => controller.GetMatchedRestaurantsContactDetailsView());
 
 			return matchedRestaurants;
 		}
