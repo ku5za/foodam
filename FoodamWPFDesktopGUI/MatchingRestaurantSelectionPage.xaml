@@ -25,14 +25,14 @@
                     <EventTrigger RoutedEvent="Loaded">
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation From="200" To="0" Duration="0:0:0.3"
+                                <DoubleAnimation From="200" To="0" Duration="0:0:0.2"
                                          Storyboard.TargetName="PageHeader_TranslateAnimation"
                                          Storyboard.TargetProperty="X">
                                     <DoubleAnimation.EasingFunction>
                                         <CubicEase EasingMode="EaseOut"/>
                                     </DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
-                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.3"
+                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.2"
                                          Storyboard.TargetName="RestaurantSelectionPageHeader_Label"
                                          Storyboard.TargetProperty="Opacity">
                                     <DoubleAnimation.EasingFunction>
@@ -72,15 +72,167 @@
                                       Opacity="0.3"
                                       Color="#313131"/>
                 </Button.Effect>
+                <Button.RenderTransform>
+                    <TranslateTransform x:Name="BackwardsButton_TranslateAnimation" X="200"/>
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation To="0" Duration="0:0:0.2"
+                                                 BeginTime="0:0:0.4"
+                                                 Storyboard.TargetProperty="X"
+                                                 Storyboard.TargetName="BackwardsButton_TranslateAnimation">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.2"
+                                         BeginTime="0:0:0.4"
+                                         Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
             </Button>
             <Canvas x:Name="RestaurantSelectionOrderFillStatus_Canvas"
                     Grid.Column="1"
                     HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Ellipse Width="50" Height="50" Fill="#FF3A3A" Canvas.Left="-100px" Canvas.Top="-25px"/>
+                <Ellipse Width="50" Height="50" Opacity="0" Fill="#FF3A3A" Canvas.Left="-100px" Canvas.Top="-25px">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform X="200" x:Name="EllipseX_Animation"/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                    <Ellipse.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        To="0"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:0.6"
+                                        Storyboard.TargetName="EllipseX_Animation"
+                                        Storyboard.TargetProperty="X">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        To="1"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:0.6"
+                                        Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Ellipse.Triggers>
+                </Ellipse>
                 <Label Content="1" FontSize="20" Foreground="White" Canvas.Top="-18px" Canvas.Left="-86px"/>
-                <Label Content="2" FontSize="20" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="-36px"/>
-                <Label Content="3" FontSize="20" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="14px"/>
-                <Label Content="4" FontSize="20" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="64px"/>
+                <Label Content="2" FontSize="20" Opacity="0" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="-36px">
+                    <Label.RenderTransform>
+                        <TranslateTransform X="200" x:Name="SecondStepLabel_Animation"/>
+                    </Label.RenderTransform>
+                    <Label.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        To="0"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:0.8"
+                                        Storyboard.TargetName="SecondStepLabel_Animation"
+                                        Storyboard.TargetProperty="X">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        To="1"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:0.8"
+                                        Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Label Content="3" FontSize="20" Opacity="0" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="14px">
+                    <Label.RenderTransform>
+                        <TranslateTransform X="200" x:Name="ThirdStepLabel_Animation"/>
+                    </Label.RenderTransform>
+                    <Label.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        To="0"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:1"
+                                        Storyboard.TargetName="ThirdStepLabel_Animation"
+                                        Storyboard.TargetProperty="X">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        To="1"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:1"
+                                        Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Label Content="4" FontSize="20" Opacity="0" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="64px">
+                    <Label.RenderTransform>
+                        <TranslateTransform X="200" x:Name="FourthStepLabel_Animation"/>
+                    </Label.RenderTransform>
+                    <Label.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        To="0"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:1.2"
+                                        Storyboard.TargetName="FourthStepLabel_Animation"
+                                        Storyboard.TargetProperty="X">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        To="1"
+                                        Duration="0:0:0.2"
+                                        BeginTime="0:0:1.2"
+                                        Storyboard.TargetProperty="Opacity">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Label.Triggers>
+                </Label>
             </Canvas>
             <Button x:Name="RestaurantSelectionForwards_Button"
                     Grid.Column="2"
@@ -98,6 +250,32 @@
                                       Opacity="0.3"
                                       Color="#313131"/>
                 </Button.Effect>
+                <Button.RenderTransform>
+                    <TranslateTransform x:Name="ForwardsButton_TranslateAnimation" X="200"/>
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation To="0" Duration="0:0:0.2"
+                                                 BeginTime="0:0:1.4"
+                                                 Storyboard.TargetProperty="X"
+                                                 Storyboard.TargetName="ForwardsButton_TranslateAnimation">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.2"
+                                         BeginTime="0:0:1.4"
+                                         Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
             </Button>
         </Grid>
     </Grid>

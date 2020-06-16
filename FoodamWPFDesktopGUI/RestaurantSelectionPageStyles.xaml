@@ -11,6 +11,7 @@
         <Setter Property="Foreground" Value="#313131"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="20px"/>
+        <Setter Property="Opacity" Value="0"/>
     </Style>
 
     <Style x:Key="RestaurantSelection_ListBoxStyle" TargetType="ListBox">
@@ -20,54 +21,133 @@
         <Setter Property="Background" Value="White"/>
         <Setter Property="Margin" Value="30 0"/>
         <Setter Property="BorderThickness" Value="0"/>
-
+        
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <StackPanel.RenderTransform>
-                            <TranslateTransform X="200" x:Name="StackPanel_TranslateAnimation"/>
-                        </StackPanel.RenderTransform>
-                        <StackPanel.Triggers>
-                            <EventTrigger RoutedEvent="Loaded">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation From="200" To="0" Duration="0:0:0.3"
-                                                         BeginTime="0:0:0.15"
-                                                         Storyboard.TargetName="StackPanel_TranslateAnimation"
+                        <Label FontSize="30" Padding="0" Margin="0" FontWeight="Medium" Content="{Binding Name}">
+                            <Label.RenderTransform>
+                                <TranslateTransform X="200" x:Name="NameLabel_TranslateAnimation"/>
+                            </Label.RenderTransform>
+                            <Label.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="0" Duration="0:0:0.2"
+                                                         BeginTime="0:0:0.2"
+                                                         Storyboard.TargetName="NameLabel_TranslateAnimation"
                                                          Storyboard.TargetProperty="X"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </StackPanel.Triggers>
-                        <StackPanel.Resources>
-                            <Style TargetType="StackPanel">
-                                <Setter Property="Opacity" Value="0"/>
-                                <Style.Triggers>
-                                    <EventTrigger RoutedEvent="Loaded">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.3"
-                                                                 BeginTime="0:0:0.15"
-                                                                 Storyboard.TargetProperty="Opacity">
-                                                    <DoubleAnimation.EasingFunction>
-                                                        <CubicEase EasingMode="EaseOut"/>
-                                                    </DoubleAnimation.EasingFunction>
-                                                </DoubleAnimation>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </StackPanel.Resources>
-                        
-                        <Label FontSize="30" Padding="0" Margin="0" FontWeight="Medium" Content="{Binding Name}"/>
-                        <Label FontSize="20" Padding="0" Margin="0" FontWeight="Light" Content="{Binding PhoneNumber}"/>
-                        <Label FontSize="12" Padding="0" Margin="1 0" Foreground="#999999" Content="{Binding Address}"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Label.Triggers>
+                            <Label.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Opacity" Value="0"/>
+                                    <Style.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation To="1.0" Duration="0:0:0.2"
+                                                                     BeginTime="0:0:0.2"
+                                                                     Storyboard.TargetProperty="Opacity">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <CubicEase EasingMode="EaseOut"/>
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Resources>
+                        </Label>
+                        <Label FontSize="20" Padding="0" Margin="0" FontWeight="Light" Content="{Binding PhoneNumber}">
+                            <Label.RenderTransform>
+                                <TranslateTransform X="200" x:Name="PhoneNumberLabel_TranslateAnimation"/>
+                            </Label.RenderTransform>
+                            <Label.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="0" Duration="0:0:0.2"
+                                                         BeginTime="0:0:0.4"
+                                                         Storyboard.TargetName="PhoneNumberLabel_TranslateAnimation"
+                                                         Storyboard.TargetProperty="X"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Label.Triggers>
+                            <Label.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Opacity" Value="0"/>
+                                    <Style.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation To="1.0" Duration="0:0:0.2"
+                                                                     BeginTime="0:0:0.4"
+                                                                     Storyboard.TargetProperty="Opacity">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <CubicEase EasingMode="EaseOut"/>
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Resources>
+                        </Label>
+                        <Label FontSize="12" Padding="0" Margin="1 0" Foreground="#999999" Content="{Binding Address}">
+                            <Label.RenderTransform>
+                                <TranslateTransform X="200" x:Name="AddressLabel_TranslateAnimation"/>
+                            </Label.RenderTransform>
+                            <Label.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="0" Duration="0:0:0.2"
+                                                         BeginTime="0:0:0.6"
+                                                         Storyboard.TargetName="AddressLabel_TranslateAnimation"
+                                                         Storyboard.TargetProperty="X"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Label.Triggers>
+                            <Label.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Opacity" Value="0"/>
+                                    <Style.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation To="1.0" Duration="0:0:0.2"
+                                                                     BeginTime="0:0:0.6"
+                                                                     Storyboard.TargetProperty="Opacity">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <CubicEase EasingMode="EaseOut"/>
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Resources>
+                        </Label>
                     </StackPanel>
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+    
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+
     </Style>
 
     <Style x:Key="RestaurantSelection_ListBoxItemStyle" TargetType="ListBoxItem">
@@ -102,9 +182,10 @@
         <Setter Property="Foreground" Value="#313131"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Opacity" Value="0"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="#777777"/>
+                <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -114,9 +195,10 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#FF3A3A"/>
         <Setter Property="BorderBrush" Value="#FF3A3A"/>
+        <Setter Property="Opacity" Value="0"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="#FF3A3A"/>
+                <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
         </Style.Triggers>
     </Style>
