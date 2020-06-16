@@ -23,8 +23,6 @@ namespace FoodamWPFDesktopGUI
 	/// </summary>
 	public partial class MatchingRestaurantSelectionPage : Page
 	{
-		private delegate void addingListItemDelegate(RestaurantContactDetails item);
-
 		public MatchingRestaurantSelectionPage(string restaurantsListContent)
 		{
 			InitializeComponent();
@@ -43,6 +41,5 @@ namespace FoodamWPFDesktopGUI
 				);
 			}
 		}
-
 	}
 }

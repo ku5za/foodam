@@ -138,7 +138,7 @@
                     </Ellipse.Triggers>
                 </Ellipse>
                 <Label Content="1" FontSize="20" Foreground="White" Canvas.Top="-18px" Canvas.Left="-86px"/>
-                <Label Content="2" FontSize="20" Opacity="0" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="-36px">
+                <Label Content="2" FontSize="20" Opacity="0" Foreground="#919191" Canvas.Top="-18px" Canvas.Left="-36px">
                     <Label.RenderTransform>
                         <TranslateTransform X="200" x:Name="SecondStepLabel_Animation"/>
                     </Label.RenderTransform>
@@ -149,7 +149,7 @@
                                     <DoubleAnimation
                                         To="0"
                                         Duration="0:0:0.2"
-                                        BeginTime="0:0:0.8"
+                                        BeginTime="0:0:0.7"
                                         Storyboard.TargetName="SecondStepLabel_Animation"
                                         Storyboard.TargetProperty="X">
                                         <DoubleAnimation.EasingFunction>
@@ -159,7 +159,7 @@
                                     <DoubleAnimation
                                         To="1"
                                         Duration="0:0:0.2"
-                                        BeginTime="0:0:0.8"
+                                        BeginTime="0:0:0.7"
                                         Storyboard.TargetProperty="Opacity">
                                         <DoubleAnimation.EasingFunction>
                                             <CubicEase EasingMode="EaseOut"/>
@@ -170,7 +170,7 @@
                         </EventTrigger>
                     </Label.Triggers>
                 </Label>
-                <Label Content="3" FontSize="20" Opacity="0" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="14px">
+                <Label Content="3" FontSize="20" Opacity="0" Foreground="#919191" Canvas.Top="-18px" Canvas.Left="14px">
                     <Label.RenderTransform>
                         <TranslateTransform X="200" x:Name="ThirdStepLabel_Animation"/>
                     </Label.RenderTransform>
@@ -181,7 +181,7 @@
                                     <DoubleAnimation
                                         To="0"
                                         Duration="0:0:0.2"
-                                        BeginTime="0:0:1"
+                                        BeginTime="0:0:0.8"
                                         Storyboard.TargetName="ThirdStepLabel_Animation"
                                         Storyboard.TargetProperty="X">
                                         <DoubleAnimation.EasingFunction>
@@ -191,7 +191,7 @@
                                     <DoubleAnimation
                                         To="1"
                                         Duration="0:0:0.2"
-                                        BeginTime="0:0:1"
+                                        BeginTime="0:0:0.8"
                                         Storyboard.TargetProperty="Opacity">
                                         <DoubleAnimation.EasingFunction>
                                             <CubicEase EasingMode="EaseOut"/>
@@ -202,7 +202,7 @@
                         </EventTrigger>
                     </Label.Triggers>
                 </Label>
-                <Label Content="4" FontSize="20" Opacity="0" Foreground="#313131" Canvas.Top="-18px" Canvas.Left="64px">
+                <Label Content="4" FontSize="20" Opacity="0" Foreground="#919191" Canvas.Top="-18px" Canvas.Left="64px">
                     <Label.RenderTransform>
                         <TranslateTransform X="200" x:Name="FourthStepLabel_Animation"/>
                     </Label.RenderTransform>
@@ -213,7 +213,7 @@
                                     <DoubleAnimation
                                         To="0"
                                         Duration="0:0:0.2"
-                                        BeginTime="0:0:1.2"
+                                        BeginTime="0:0:0.9"
                                         Storyboard.TargetName="FourthStepLabel_Animation"
                                         Storyboard.TargetProperty="X">
                                         <DoubleAnimation.EasingFunction>
@@ -223,7 +223,7 @@
                                     <DoubleAnimation
                                         To="1"
                                         Duration="0:0:0.2"
-                                        BeginTime="0:0:1.2"
+                                        BeginTime="0:0:0.9"
                                         Storyboard.TargetProperty="Opacity">
                                         <DoubleAnimation.EasingFunction>
                                             <CubicEase EasingMode="EaseOut"/>
@@ -259,7 +259,7 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <DoubleAnimation To="0" Duration="0:0:0.2"
-                                                 BeginTime="0:0:1.4"
+                                                 BeginTime="0:0:1.1"
                                                  Storyboard.TargetProperty="X"
                                                  Storyboard.TargetName="ForwardsButton_TranslateAnimation">
                                     <DoubleAnimation.EasingFunction>
@@ -267,7 +267,7 @@
                                     </DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
                                 <DoubleAnimation From="0" To="1.0" Duration="0:0:0.2"
-                                         BeginTime="0:0:1.4"
+                                         BeginTime="0:0:1.1"
                                          Storyboard.TargetProperty="Opacity">
                                     <DoubleAnimation.EasingFunction>
                                         <CubicEase EasingMode="EaseOut"/>
