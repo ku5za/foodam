@@ -19,16 +19,15 @@
         <Setter Property="MaxWidth" Value="1000px"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="Margin" Value="30 0"/>
-        <!--<Setter Property="BorderBrush" Value="#313131"/>-->
         <Setter Property="BorderThickness" Value="0"/>
 
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <StackPanel>
-                        <Label FontSize="30" FontWeight="Medium" Content="{Binding Name}"/>
-                        <Label FontSize="14" Content="{Binding PhoneNumber}"/>
-                        <Label FontSize="12" Foreground="#999999" Content="{Binding Address}"/>
+                    <StackPanel Margin="5">
+                        <Label FontSize="30" Padding="0" Margin="0" FontWeight="Medium" Content="{Binding Name}"/>
+                        <Label FontSize="20" Padding="0" Margin="0" FontWeight="Light" Content="{Binding PhoneNumber}"/>
+                        <Label FontSize="12" Padding="0" Margin="1 0" Foreground="#999999" Content="{Binding Address}"/>
                     </StackPanel>
                 </DataTemplate>
             </Setter.Value>
