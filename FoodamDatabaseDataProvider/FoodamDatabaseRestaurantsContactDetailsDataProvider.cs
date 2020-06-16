@@ -51,6 +51,8 @@ namespace FoodamDatabaseDataProvider
 				}
 			}
 
+			restaurantsTableAdapter.Connection.Close();
+
 			return listToReturn;
 		}
 	}
