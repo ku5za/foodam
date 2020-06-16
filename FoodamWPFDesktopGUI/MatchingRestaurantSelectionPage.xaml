@@ -17,7 +17,33 @@
                     Grid.Row="0">
             <Label x:Name="RestaurantSelectionPageHeader_Label"
                    Style="{StaticResource RestaurantSelectionPageHeader_LabelStyle}"
-                   Content="Restauracje w Twojej okolicy"/>
+                   Content="Restauracje w Twojej okolicy">
+                <Label.RenderTransform>
+                    <TranslateTransform x:Name="PageHeader_TranslateAnimation" X="200"/>
+                </Label.RenderTransform>
+                <Label.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation From="200" To="0" Duration="0:0:0.3"
+                                         Storyboard.TargetName="PageHeader_TranslateAnimation"
+                                         Storyboard.TargetProperty="X">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation From="0" To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetName="RestaurantSelectionPageHeader_Label"
+                                         Storyboard.TargetProperty="Opacity">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Label.Triggers>
+            </Label>
             <ListBox x:Name="RestaurantSelection_ListBox"
                      ItemContainerStyle="{StaticResource RestaurantSelection_ListBoxItemStyle}"
                      Style="{StaticResource RestaurantSelection_ListBoxStyle}"/>
