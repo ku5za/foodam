@@ -58,6 +58,7 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="RestaurantSelectionBackwards_Button"
                     Grid.Column="0"
+                    Click="RestaurantSelectionBackwards_Button_Click"
                     Style="{StaticResource RestaurantSelectionBackwards_ButtonStyle}"
                     Content="wstecz">
                 <Button.Resources>

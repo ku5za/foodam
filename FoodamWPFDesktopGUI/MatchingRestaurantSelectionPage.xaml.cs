@@ -41,5 +41,11 @@ namespace FoodamWPFDesktopGUI
 				);
 			}
 		}
+
+		private void RestaurantSelectionBackwards_Button_Click(object sender, RoutedEventArgs e)
+		{
+			var previousPage = new DeliveryAddressFormPage();
+			NavigationService.Navigate(previousPage);
+		}
 	}
 }
