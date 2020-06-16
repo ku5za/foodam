@@ -31,8 +31,6 @@ namespace FoodamWPFDesktopGUI
 
 			var restaurantsList = JsonSerializer.Deserialize<RestaurantContactDetails[]>(restaurantsListContent);
 
-			int animationDelay = 0;
-
 			foreach (var listItem in restaurantsList)
 			{
 				RestaurantSelection_ListBox.Items.Add(
@@ -43,10 +41,6 @@ namespace FoodamWPFDesktopGUI
 						Address = $"{listItem.Address.Street}, {listItem.Address.PostalCode} {listItem.Address.City}"
 					}
 				);
-
-				animationDelay += 150;
-
-				Thread.Sleep(animationDelay);
 			}
 		}
 

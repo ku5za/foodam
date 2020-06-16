@@ -70,7 +70,8 @@
                                       ShadowDepth="3"
                                       Direction="270"
                                       Opacity="0.3"
-                                      Color="#313131"/>
+                                      Color="#313131">
+                    </DropShadowEffect>
                 </Button.Effect>
                 <Button.RenderTransform>
                     <TranslateTransform x:Name="BackwardsButton_TranslateAnimation" X="200"/>
