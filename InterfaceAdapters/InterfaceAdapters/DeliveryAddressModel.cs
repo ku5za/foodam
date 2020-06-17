@@ -86,10 +86,6 @@ namespace InterfaceAdapters
 
 		public DeliveryAddressModel(string deliveryAddress)
 		{
-			//StreetValidator = x => new Regex(@"\b[a-zA-Z\p{IsLatinExtended-A}- ]{3,}\ \d{1,3}[a-zA-Z]?/?\d{0,4}\b").IsMatch(x);
-			//PostalCodeValidator = x => new Regex(@"^\b\d\d-\d\d\d\b").IsMatch(x);
-			//CityValidator = x => new Regex(@"\b[a-zA-ZęóąśłżźćńĘÓĄŚŁŻŹĆŃ]{3,}\b").IsMatch(x);
-
 			StreetValidator = InputValidators.StandardStreetValidator;
 			PostalCodeValidator = InputValidators.StandardPostalCodeValidator;
 			CityValidator = InputValidators.StandardCityValidator;
@@ -97,12 +93,12 @@ namespace InterfaceAdapters
 			IsCorrectInput = true;
 			Hint = string.Empty;
 
-			TearDeliveryAddressIntoDetails(deliveryAddress);
+			//TearDeliveryAddressIntoDetails(deliveryAddress);
 		}
 
-		private void TearDeliveryAddressIntoDetails(string deliveryAddress)
+		private void SplitDeliveryAddressIntoDetails(string deliveryAddress)
 		{
-			string deliveryAddressInputHint = "Wprowadz pełen adres w formacie: Plac Zamkowy 1, 00-000 Warszawa";
+			string deliveryAddressInputHint = "Wprowadz pełen adres w formacie: Świętokrzyska 31/33, 00-001 Warszawa";
 			if (deliveryAddress.Length == 0)
 			{
 				IsCorrectInput = false;

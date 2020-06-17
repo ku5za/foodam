@@ -25,6 +25,7 @@ namespace FoodamWPFDesktopGUI
 	public partial class DeliveryAddressFormPage : Page
 	{
 		private event EventHandler CorrectDeliveryAddressPassed;
+		private bool isInputValid = false;
 		public DeliveryAddressFormPage()
 		{
 			InitializeComponent();
@@ -46,6 +47,51 @@ namespace FoodamWPFDesktopGUI
 			}
 
 			GoFurtherIfNotNull(deliveryAddressView);
+		}
+
+		private Address SplitDeliveryAddressIntoDetails(string deliveryAddress)
+		{
+			isInputValid = true;
+			string deliveryAddressInputHint = "Wprowadz pełen adres w formacie: Świętokrzyska 31/33, 00-001 Warszawa";
+			var validationHintHolder = DeliveryAddressInputValidationHint_TextBlock.Text;
+			var potentialDeliveryAddress = new Address();
+
+			if (deliveryAddress.Length == 0)
+			{
+				isInputValid = false;
+				validationHintHolder = deliveryAddressInputHint;
+				return null;
+			}
+
+			var streetAndCityDetailsSeparated = deliveryAddress.Trim().Split(',', (char)StringSplitOptions.RemoveEmptyEntries);
+
+			try
+			{
+				potentialDeliveryAddress.Street = streetAndCityDetailsSeparated[0].Trim();
+
+				var postalCodeAndCitySeparated =
+					streetAndCityDetailsSeparated[1]
+					.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries)
+					.ToList();
+				postalCodeAndCitySeparated.RemoveAll(x => x == "");
+
+				potentialDeliveryAddress.PostalCode = postalCodeAndCitySeparated[0];
+				potentialDeliveryAddress.City = postalCodeAndCitySeparated[1];
+			}
+			catch (IndexOutOfRangeException)
+			{
+				isInputValid = false;
+				validationHintHolder = deliveryAddressInputHint;
+				return null;
+			}
+			catch (ArgumentOutOfRangeException)
+			{
+				isInputValid = false;
+				validationHintHolder = deliveryAddressInputHint;
+				return null;
+			}
+
+			return potentialDeliveryAddress;
 		}
 
 		private async void GoFurtherIfNotNull(DeliveryAddressView deliveryAddressView)
