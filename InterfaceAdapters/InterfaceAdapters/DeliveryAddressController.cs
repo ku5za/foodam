@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foodam;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,14 +12,14 @@ namespace InterfaceAdapters
 	public class DeliveryAddressController
 	{
 		#region methods
-		private DeliveryAddressModel GetDeliveryAddressModel(string deliveryAddressInput)
+		private DeliveryAddressModel GetDeliveryAddressModel(Address passedDeliveryAddress)
 		{
-			return new DeliveryAddressModel(deliveryAddressInput);
+			return new DeliveryAddressModel(passedDeliveryAddress);
 		}
 
-		public DeliveryAddressView GetDeliveryAddresView(string deliveryAddressInput)
+		public DeliveryAddressView GetDeliveryAddresView(Address passedDeliveryAddress)
 		{
-			var model = GetDeliveryAddressModel(deliveryAddressInput);
+			var model = GetDeliveryAddressModel(passedDeliveryAddress);
 			DeliveryAddressView deliveryAddressView = new DeliveryAddressView(model);
 
 			if(deliveryAddressView.IsCorrectInput)

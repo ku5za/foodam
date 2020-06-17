@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foodam;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,7 +85,7 @@ namespace InterfaceAdapters
 		private InputValidators.ValidatorTemplate<string> CityValidator { get; set; }
 		#endregion
 
-		public DeliveryAddressModel(string deliveryAddress)
+		public DeliveryAddressModel(Address deliveryAddress)
 		{
 			StreetValidator = InputValidators.StandardStreetValidator;
 			PostalCodeValidator = InputValidators.StandardPostalCodeValidator;
@@ -93,44 +94,9 @@ namespace InterfaceAdapters
 			IsCorrectInput = true;
 			Hint = string.Empty;
 
-			//TearDeliveryAddressIntoDetails(deliveryAddress);
-		}
-
-		private void SplitDeliveryAddressIntoDetails(string deliveryAddress)
-		{
-			string deliveryAddressInputHint = "Wprowadz pełen adres w formacie: Świętokrzyska 31/33, 00-001 Warszawa";
-			if (deliveryAddress.Length == 0)
-			{
-				IsCorrectInput = false;
-				Hint = deliveryAddressInputHint;
-				return;
-			}
-
-			var streetAndCityDetailsSeparated = deliveryAddress.Trim().Split(',', (char)StringSplitOptions.RemoveEmptyEntries);
-
-			try
-			{
-				DeliveryStreet = streetAndCityDetailsSeparated[0].Trim();
-
-				var postalCodeAndCitySeparated =
-					streetAndCityDetailsSeparated[1]
-					.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries)
-					.ToList();
-				postalCodeAndCitySeparated.RemoveAll(x => x == "");
-
-				DeliveryPostalCode = postalCodeAndCitySeparated[0];
-				DeliveryCity = postalCodeAndCitySeparated[1];
-			}
-			catch(IndexOutOfRangeException)
-			{
-				IsCorrectInput = false;
-				Hint = deliveryAddressInputHint;
-			}
-			catch(ArgumentOutOfRangeException)
-			{
-				IsCorrectInput = false;
-				Hint = deliveryAddressInputHint;
-			}
+			DeliveryStreet = deliveryAddress.Street;
+			DeliveryPostalCode = deliveryAddress.PostalCode;
+			DeliveryCity = deliveryAddress.City;
 		}
 
 		public string GetStreet()
