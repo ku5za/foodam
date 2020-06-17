@@ -24,6 +24,7 @@ namespace FoodamWPFDesktopGUI
 	/// </summary>
 	public partial class DeliveryAddressFormPage : Page
 	{
+		private event EventHandler CorrectDeliveryAddressPassed;
 		public DeliveryAddressFormPage()
 		{
 			InitializeComponent();
@@ -53,8 +54,7 @@ namespace FoodamWPFDesktopGUI
 			{
 				DeliveryAddressInputValidationHint_TextBlock.Text = "";
 
-				var matchedRestaurantsTask = GetNextPageContentAsync(deliveryAddressView);
-				var matchedRestaurants = await matchedRestaurantsTask;
+				var matchedRestaurants = await GetNextPageContentAsync(deliveryAddressView);
 
 				if(matchedRestaurants.Length == 0)
 				{
