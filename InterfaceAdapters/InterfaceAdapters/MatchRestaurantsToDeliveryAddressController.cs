@@ -37,7 +37,7 @@ namespace InterfaceAdapters
 			var model = GetMatchRestaurantsContactDetailsModel();
 			var view = new MatchRestaurantsToDeliveryAddressView(model);
 
-			return view.GetMatchedRestaurantsContactDetailsView();
+			return view.GetMatchedRestaurantsContactDetailsJSON();
 		}
 	}
 }
