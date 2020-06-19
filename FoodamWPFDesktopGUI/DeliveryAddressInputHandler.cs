@@ -7,10 +7,12 @@ using System.Windows.Controls;
 namespace FoodamWPFDesktopGUI
 {
 	public delegate void CorrectDeliveryAddressHandler();
+	public delegate void IncorrectDeliveryAddressHandler();
 	
 	internal class DeliveryAddressInputHandler
 	{
 		public event CorrectDeliveryAddressHandler CorrectDeliveryAddressPassed;
+		public event IncorrectDeliveryAddressHandler IncorrectDeliveryAddressPassed;
 
 		private readonly TextBox deliveryAddressInput;
 		private readonly TextBlock inputValidationHintTextBlock;
@@ -106,6 +108,7 @@ namespace FoodamWPFDesktopGUI
 		{
 			IsInputValid = false;
 			inputValidationHintTextBlock.Text = validationHint;
+			IncorrectDeliveryAddressPassed?.Invoke();
 		}
 	}
 }
