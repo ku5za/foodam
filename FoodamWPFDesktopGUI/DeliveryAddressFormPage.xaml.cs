@@ -24,74 +24,68 @@ namespace FoodamWPFDesktopGUI
 	/// </summary>
 	public partial class DeliveryAddressFormPage : Page
 	{
-		private event EventHandler CorrectDeliveryAddressPassed;
-		private bool isInputValid = false;
+		private readonly DeliveryAddressInputHandler inputHandler = null;
+		
 		public DeliveryAddressFormPage()
 		{
 			InitializeComponent();
+
+			var deliveryAddressInput = DeliveryAddressInput_TextBox;
+			var inputValidationHintTextBlock = DeliveryAddressInputValidationHint_TextBlock;
+			inputHandler = new DeliveryAddressInputHandler(deliveryAddressInput, inputValidationHintTextBlock);
+
+			SearchRestaurants_Button.IsEnabled = false;
+			DeliveryAddressInput_TextBox.TextChanged += DeliveryAddressInput_TextBox_TextChanged;
+
+			inputHandler.CorrectDeliveryAddressPassed += OnCorrectDeliveryAddressPass;
+			inputHandler.IncorrectDeliveryAddressPassed += OnIncorrectDeliveryAddressPass;
+		}
+
+		private void DeliveryAddressInput_TextBox_TextChanged(object sender, RoutedEventArgs e)
+		{
+			inputHandler.SplitDeliveryAddressIntoDetails();
+			
+			//if(inputHandler.IsInputValid != true)
+			//{
+			//	SearchRestaurants_Button.IsEnabled = false;
+			//}
+		}
+
+		private void OnCorrectDeliveryAddressPass()
+		{
+			SearchRestaurants_Button.IsEnabled = true;
+			DeliveryAddressInputValidationHint_TextBlock.Text = "";
+		}
+
+		private void OnIncorrectDeliveryAddressPass()
+		{
+			SearchRestaurants_Button.IsEnabled = false;
 		}
 
 		private void SearchRestaurants_Button_Click(object sender, RoutedEventArgs e)
 		{
 			DeliveryAddressController deliveryAddressController = new DeliveryAddressController();
-			string deliveryAddressInput = DeliveryAddressInput_TextBox.Text;
 			DeliveryAddressView deliveryAddressView = null;
 
-			try
+			if (inputHandler.IsInputValid)
 			{
-				deliveryAddressView = deliveryAddressController.GetDeliveryAddresView(deliveryAddressInput);
+				string deliveryAddressInput = DeliveryAddressInput_TextBox.Text;
+				Address deliveryAddress = inputHandler.SplitDeliveryAddressIntoDetails();
+				try
+				{
+					deliveryAddressView = deliveryAddressController.GetDeliveryAddresView(deliveryAddress);
+				}
+				catch (Exception exc)
+				{
+					DeliveryAddressInputValidationHint_TextBlock.Text = exc.Message;
+				}
 			}
-			catch(Exception exc)
+			else
 			{
-				DeliveryAddressInputValidationHint_TextBlock.Text = exc.Message;
+				DeliveryAddressInputValidationHint_TextBlock.Text = inputHandler.InputValidationHint;
 			}
 
 			GoFurtherIfNotNull(deliveryAddressView);
-		}
-
-		private Address SplitDeliveryAddressIntoDetails(string deliveryAddress)
-		{
-			isInputValid = true;
-			string deliveryAddressInputHint = "Wprowadz pełen adres w formacie: Świętokrzyska 31/33, 00-001 Warszawa";
-			var validationHintHolder = DeliveryAddressInputValidationHint_TextBlock.Text;
-			var potentialDeliveryAddress = new Address();
-
-			if (deliveryAddress.Length == 0)
-			{
-				isInputValid = false;
-				validationHintHolder = deliveryAddressInputHint;
-				return null;
-			}
-
-			var streetAndCityDetailsSeparated = deliveryAddress.Trim().Split(',', (char)StringSplitOptions.RemoveEmptyEntries);
-
-			try
-			{
-				potentialDeliveryAddress.Street = streetAndCityDetailsSeparated[0].Trim();
-
-				var postalCodeAndCitySeparated =
-					streetAndCityDetailsSeparated[1]
-					.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries)
-					.ToList();
-				postalCodeAndCitySeparated.RemoveAll(x => x == "");
-
-				potentialDeliveryAddress.PostalCode = postalCodeAndCitySeparated[0];
-				potentialDeliveryAddress.City = postalCodeAndCitySeparated[1];
-			}
-			catch (IndexOutOfRangeException)
-			{
-				isInputValid = false;
-				validationHintHolder = deliveryAddressInputHint;
-				return null;
-			}
-			catch (ArgumentOutOfRangeException)
-			{
-				isInputValid = false;
-				validationHintHolder = deliveryAddressInputHint;
-				return null;
-			}
-
-			return potentialDeliveryAddress;
 		}
 
 		private async void GoFurtherIfNotNull(DeliveryAddressView deliveryAddressView)
@@ -99,8 +93,7 @@ namespace FoodamWPFDesktopGUI
 			if (deliveryAddressView != null)
 			{
 				DeliveryAddressInputValidationHint_TextBlock.Text = "";
-
-				var matchedRestaurants = await GetNextPageContentAsync(deliveryAddressView);
+				var matchedRestaurants = await GetMatchedRestaurantsAsync(deliveryAddressView);
 
 				if(matchedRestaurants.Length == 0)
 				{
@@ -113,7 +106,7 @@ namespace FoodamWPFDesktopGUI
 			}
 		}
 
-		private async Task<string> GetNextPageContentAsync(DeliveryAddressView deliveryAddressView)
+		private async Task<string> GetMatchedRestaurantsAsync(DeliveryAddressView deliveryAddressView)
 		{
 			var deliveryAddress = deliveryAddressView.DeliveryAddress;
 			var dataGateway = new FoodamDatabaseRestaurantsContactDetailsDataProvider(deliveryAddress.Street, deliveryAddress.PostalCode, deliveryAddress.City);
