@@ -1,4 +1,6 @@
 ﻿using Foodam;
+using FoodamDatabaseDataProvider;
+using InterfaceAdapters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +23,40 @@ namespace FoodamWPFDesktopGUI
 	/// <summary>
 	/// Interaction logic for MatchingRestaurantSelectionPage.xaml
 	/// </summary>
+	public delegate void AnyRestaurantFoundHandler();
 	public partial class MatchingRestaurantSelectionPage : Page
 	{
-		public MatchingRestaurantSelectionPage(string restaurantsListContent)
+		private event AnyRestaurantFoundHandler AnyRestaurantFound;
+		public MatchingRestaurantSelectionPage(Address deliveryAddress)
 		{
 			InitializeComponent();
 
-			var restaurantsList = JsonSerializer.Deserialize<RestaurantContactDetails[]>(restaurantsListContent);
+			RestaurantSelectionForwards_Button.IsEnabled = false;
+			AnyRestaurantFound += OnAnyRestaurantFound;
+
+			SetMatchedRestaurantListContent(deliveryAddress);
+		}
+
+		private void OnAnyRestaurantFound()
+		{
+			RestaurantSelectionForwards_Button.IsEnabled = true;
+		}
+
+		private void RestaurantSelectionBackwards_Button_Click(object sender, RoutedEventArgs e)
+		{
+			var previousPage = new DeliveryAddressFormPage();
+			NavigationService.Navigate(previousPage);
+		}
+
+		private async void SetMatchedRestaurantListContent(Address deliveryAddress)
+		{
+			var matchedRestaurantsList = await GetMatchedRestaurantsAsync(deliveryAddress);
+			var restaurantsList = JsonSerializer.Deserialize<RestaurantContactDetails[]>(matchedRestaurantsList);
+
+			if(restaurantsList.Length > 0)
+			{
+				AnyRestaurantFound?.Invoke();
+			}
 
 			foreach (var listItem in restaurantsList)
 			{
@@ -42,10 +71,13 @@ namespace FoodamWPFDesktopGUI
 			}
 		}
 
-		private void RestaurantSelectionBackwards_Button_Click(object sender, RoutedEventArgs e)
+		private Task<string> GetMatchedRestaurantsAsync(Address deliveryAddress)
 		{
-			var previousPage = new DeliveryAddressFormPage();
-			NavigationService.Navigate(previousPage);
+			var dataGateway = new FoodamDatabaseRestaurantsContactDetailsDataProvider(deliveryAddress.Street, deliveryAddress.PostalCode, deliveryAddress.City);
+			var controller = new MatchRestaurantsToDeliveryAddressController(deliveryAddress, dataGateway);
+			var matchedRestaurantsTask = Task.Run(() => controller.GetMatchedRestaurantsContactDetailsView());
+
+			return matchedRestaurantsTask;
 		}
 	}
 }

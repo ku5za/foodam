@@ -6,7 +6,7 @@ namespace InterfaceAdapters
 {
 	public class DeliveryAddressView
 	{
-		public bool IsCorrectInput 
+		public bool IsCorrectInput
 		{
 			get;
 			private set;

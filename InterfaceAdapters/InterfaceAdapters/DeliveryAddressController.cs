@@ -31,8 +31,6 @@ namespace InterfaceAdapters
 				throw new Exception(deliveryAddressView.Hint);
 			}
 		}
-
-		//public List<string> GetMatchingRestaurantsList(Add)
 		#endregion
 	}
 }

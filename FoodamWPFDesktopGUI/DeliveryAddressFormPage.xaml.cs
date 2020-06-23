@@ -4,6 +4,7 @@ using InterfaceAdapters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,8 +36,8 @@ namespace FoodamWPFDesktopGUI
 			inputHandler = new DeliveryAddressInputHandler(deliveryAddressInput, inputValidationHintTextBlock);
 
 			SearchRestaurants_Button.IsEnabled = false;
-			DeliveryAddressInput_TextBox.TextChanged += DeliveryAddressInput_TextBox_TextChanged;
 
+			DeliveryAddressInput_TextBox.TextChanged += DeliveryAddressInput_TextBox_TextChanged;
 			inputHandler.CorrectDeliveryAddressPassed += OnCorrectDeliveryAddressPass;
 			inputHandler.IncorrectDeliveryAddressPassed += OnIncorrectDeliveryAddressPass;
 		}
@@ -44,11 +45,6 @@ namespace FoodamWPFDesktopGUI
 		private void DeliveryAddressInput_TextBox_TextChanged(object sender, RoutedEventArgs e)
 		{
 			inputHandler.SplitDeliveryAddressIntoDetails();
-			
-			//if(inputHandler.IsInputValid != true)
-			//{
-			//	SearchRestaurants_Button.IsEnabled = false;
-			//}
 		}
 
 		private void OnCorrectDeliveryAddressPass()
@@ -65,55 +61,19 @@ namespace FoodamWPFDesktopGUI
 		private void SearchRestaurants_Button_Click(object sender, RoutedEventArgs e)
 		{
 			DeliveryAddressController deliveryAddressController = new DeliveryAddressController();
-			DeliveryAddressView deliveryAddressView = null;
+			Address deliveryAddress = inputHandler.SplitDeliveryAddressIntoDetails();
+			//var nextPageContentTask = Task.Run(() => new MatchingRestaurantSelectionPage(deliveryAddress));
 
-			if (inputHandler.IsInputValid)
+			try
 			{
-				string deliveryAddressInput = DeliveryAddressInput_TextBox.Text;
-				Address deliveryAddress = inputHandler.SplitDeliveryAddressIntoDetails();
-				try
-				{
-					deliveryAddressView = deliveryAddressController.GetDeliveryAddresView(deliveryAddress);
-				}
-				catch (Exception exc)
-				{
-					DeliveryAddressInputValidationHint_TextBlock.Text = exc.Message;
-				}
+				var deliveryAddressView = deliveryAddressController.GetDeliveryAddresView(deliveryAddress);
 			}
-			else
+			catch(Exception ex)
 			{
-				DeliveryAddressInputValidationHint_TextBlock.Text = inputHandler.InputValidationHint;
+				Console.WriteLine(ex.Message);
 			}
 
-			GoFurtherIfNotNull(deliveryAddressView);
-		}
-
-		private async void GoFurtherIfNotNull(DeliveryAddressView deliveryAddressView)
-		{
-			if (deliveryAddressView != null)
-			{
-				DeliveryAddressInputValidationHint_TextBlock.Text = "";
-				var matchedRestaurants = await GetMatchedRestaurantsAsync(deliveryAddressView);
-
-				if(matchedRestaurants.Length == 0)
-				{
-					MessageBox.Show("Nie znaleziono restauracji dla podanego adresu");
-				}
-				else
-				{
-					NavigationService.Navigate(new MatchingRestaurantSelectionPage(matchedRestaurants));
-				}
-			}
-		}
-
-		private async Task<string> GetMatchedRestaurantsAsync(DeliveryAddressView deliveryAddressView)
-		{
-			var deliveryAddress = deliveryAddressView.DeliveryAddress;
-			var dataGateway = new FoodamDatabaseRestaurantsContactDetailsDataProvider(deliveryAddress.Street, deliveryAddress.PostalCode, deliveryAddress.City);
-			var controller = new MatchRestaurantsToDeliveryAddressController(deliveryAddress, dataGateway);
-			var matchedRestaurants = await Task.Run(() => controller.GetMatchedRestaurantsContactDetailsView());
-
-			return matchedRestaurants;
+			NavigationService.Navigate(new MatchingRestaurantSelectionPage(deliveryAddress));
 		}
 	}
 }
