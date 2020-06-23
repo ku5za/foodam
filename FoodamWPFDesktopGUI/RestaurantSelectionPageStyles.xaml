@@ -165,6 +165,12 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="NoneRestaurantFound_LabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16px"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#666666"/>
+    </Style>
+
     <Style x:Key="RestaurantSelectionNavigation_GridStyle" TargetType="Grid">
         <Setter Property="MaxWidth" Value="1000"/>
         <Setter Property="VerticalAlignment" Value="Center"/>

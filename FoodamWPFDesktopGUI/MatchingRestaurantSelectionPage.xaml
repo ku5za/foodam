@@ -44,6 +44,9 @@
                     </EventTrigger>
                 </Label.Triggers>
             </Label>
+            <Label x:Name="NoneRestaurantFound_Label"
+                   Style="{StaticResource NoneRestaurantFound_LabelStyle}"
+                   Content="Nie znaleźliśmy żadnej restauracji w okolicy podanego przez Ciebie adresu :("/>
             <ListBox x:Name="RestaurantSelection_ListBox"
                      ItemContainerStyle="{StaticResource RestaurantSelection_ListBoxItemStyle}"
                      Style="{StaticResource RestaurantSelection_ListBoxStyle}"/>

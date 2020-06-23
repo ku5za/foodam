@@ -32,6 +32,7 @@ namespace FoodamWPFDesktopGUI
 			InitializeComponent();
 
 			RestaurantSelectionForwards_Button.IsEnabled = false;
+			RestaurantSelection_ListBox.Visibility = Visibility.Hidden;
 			AnyRestaurantFound += OnAnyRestaurantFound;
 
 			SetMatchedRestaurantListContent(deliveryAddress);
@@ -40,6 +41,8 @@ namespace FoodamWPFDesktopGUI
 		private void OnAnyRestaurantFound()
 		{
 			RestaurantSelectionForwards_Button.IsEnabled = true;
+			RestaurantSelection_ListBox.Visibility = Visibility.Visible;
+			NoneRestaurantFound_Label.Visibility = Visibility.Collapsed;
 		}
 
 		private void RestaurantSelectionBackwards_Button_Click(object sender, RoutedEventArgs e)
